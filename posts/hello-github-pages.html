@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>从 GitHub Pages 开始 | Sunhuahai</title>
+    <meta
+      name="description"
+      content="这个博客的第一篇记录：为什么选择一个轻量、可维护、无需构建流程的静态站点。"
+    />
+    <link rel="icon" href="https://github.com/Sunhuahai.png" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <link rel="stylesheet" href="../assets/post.css" />
+    <script src="../assets/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="返回首页">
+        <img src="https://github.com/Sunhuahai.png" alt="" />
+        <span>Sunhuahai</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="../index.html#posts">文章</a>
+        <a href="../index.html#notes">札记</a>
+        <a href="../index.html#about">关于</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="切换深浅色主题">
+        <span aria-hidden="true">◐</span>
+      </button>
+    </header>
+
+    <main class="post-page">
+      <article class="post-article">
+        <a class="back-link" href="../index.html#posts">← 返回文章列表</a>
+        <p class="eyebrow">GitHub Pages</p>
+        <h1>从 GitHub Pages 开始</h1>
+        <div class="post-meta">
+          <time datetime="2026-05-18">2026-05-18</time>
+          <span>3 分钟阅读</span>
+        </div>
+        <img
+          class="post-cover"
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=82"
+          alt="桌面上的代码编辑器"
+        />
+
+        <p>
+          这个博客先从最小可维护版本开始：纯 HTML、CSS 和少量 JavaScript。这样做的好处是清晰，没有构建步骤，也不会因为依赖更新影响发布。
+        </p>
+
+        <p>
+          GitHub Pages 对个人博客很合适。只要仓库名是
+          <code>Sunhuahai.github.io</code>，把静态文件推到主分支后，站点就会发布到固定地址。
+        </p>
+
+        <h2>当前原则</h2>
+        <p>
+          第一版只保留真正需要的功能：文章列表、文章页、搜索、深浅色主题和 RSS。等内容积累到一定数量后，再增加归档、标签页和更完整的导航。
+        </p>
+
+        <h2>接下来</h2>
+        <p>
+          后续可以把这套结构继续演进成一个轻量写作系统，例如用 Markdown 作为源文件，再通过脚本生成静态页面。
+        </p>
+      </article>
+    </main>
+  </body>
+</html>
