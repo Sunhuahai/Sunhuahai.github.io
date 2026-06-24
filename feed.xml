@@ -7,25 +7,25 @@
     <language>zh-CN</language>
     <lastBuildDate>Wed, 24 Jun 2026 00:00:00 +0800</lastBuildDate>
     <item>
-      <title>从 GitHub Pages 开始</title>
-      <link>https://sunhuahai.github.io/posts/hello-github-pages.html</link>
-      <guid>https://sunhuahai.github.io/posts/hello-github-pages.html</guid>
+      <title>语音输入法的革命：从打字到 Vibe Coding</title>
+      <link>https://sunhuahai.github.io/posts/voice-input-revolution.html</link>
+      <guid>https://sunhuahai.github.io/posts/voice-input-revolution.html</guid>
       <pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate>
-      <description>把博客先做成一个轻量、稳定、无需构建流程的静态站点。</description>
+      <description>语音输入真正改变的不是速度，而是把口语整理成可用文本的能力。</description>
     </item>
     <item>
-      <title>把工具打磨成工作流</title>
-      <link>https://sunhuahai.github.io/posts/building-a-workflow.html</link>
-      <guid>https://sunhuahai.github.io/posts/building-a-workflow.html</guid>
+      <title>把年度总结拆成每天：为什么我开始记录</title>
+      <link>https://sunhuahai.github.io/posts/writing-as-daily-practice.html</link>
+      <guid>https://sunhuahai.github.io/posts/writing-as-daily-practice.html</guid>
       <pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate>
-      <description>工具本身不会自动带来效率，稳定的流程才会留下复利。</description>
+      <description>记录不是为了制造自律幻觉，而是为了对抗遗忘，把痛苦拆到日常。</description>
     </item>
     <item>
-      <title>近期阅读清单</title>
-      <link>https://sunhuahai.github.io/posts/reading-list.html</link>
-      <guid>https://sunhuahai.github.io/posts/reading-list.html</guid>
+      <title>是古非今：为什么我们总觉得过去更好</title>
+      <link>https://sunhuahai.github.io/posts/why-the-past-feels-better.html</link>
+      <guid>https://sunhuahai.github.io/posts/why-the-past-feels-better.html</guid>
       <pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate>
-      <description>用一份简短书单保存当下的兴趣，也给之后的自己留下线索。</description>
+      <description>怀旧有时是审美经验，有时也会变成遮蔽现实的滤镜。</description>
     </item>
   </channel>
 </rss>
