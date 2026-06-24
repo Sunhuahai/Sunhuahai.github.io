@@ -74,8 +74,7 @@ img {
   font-weight: 700;
 }
 
-.brand img,
-.profile-portrait {
+.brand img {
   flex: 0 0 auto;
   border: 1px solid var(--line);
   border-radius: 50%;
@@ -118,12 +117,6 @@ nav a:hover,
   margin: 0 auto;
   padding: 96px 0 90px;
   border-bottom: 1px solid var(--line);
-}
-
-.profile-portrait {
-  width: 112px;
-  height: 112px;
-  margin-bottom: 30px;
 }
 
 .eyebrow {
