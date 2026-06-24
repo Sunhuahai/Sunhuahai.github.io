@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>
-    <title>Sunhuahai</title>
+    <title>悟空的博客</title>
     <link>https://sunhuahai.github.io/</link>
-    <description>记录技术、阅读、生活与长期思考。</description>
+    <description>记录技术实践、阅读笔记、工具工作流和长期思考。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 May 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 00:00:00 +0800</lastBuildDate>
     <item>
       <title>从 GitHub Pages 开始</title>
       <link>https://sunhuahai.github.io/posts/hello-github-pages.html</link>
       <guid>https://sunhuahai.github.io/posts/hello-github-pages.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 +0800</pubDate>
-      <description>这个博客的第一篇记录：为什么选择一个轻量、可维护、无需构建流程的静态站点。</description>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate>
+      <description>把博客先做成一个轻量、稳定、无需构建流程的静态站点。</description>
     </item>
     <item>
       <title>把工具打磨成工作流</title>
       <link>https://sunhuahai.github.io/posts/building-a-workflow.html</link>
       <guid>https://sunhuahai.github.io/posts/building-a-workflow.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 +0800</pubDate>
-      <description>工具本身并不会带来效率，稳定的输入、清晰的边界和可复盘的输出才会。</description>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate>
+      <description>工具本身不会自动带来效率，稳定的流程才会留下复利。</description>
     </item>
     <item>
       <title>近期阅读清单</title>
       <link>https://sunhuahai.github.io/posts/reading-list.html</link>
       <guid>https://sunhuahai.github.io/posts/reading-list.html</guid>
-      <pubDate>Mon, 18 May 2026 00:00:00 +0800</pubDate>
-      <description>用一份简短书单保存当下的兴趣，也给之后的自己留下可追踪的线索。</description>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0800</pubDate>
+      <description>用一份简短书单保存当下的兴趣，也给之后的自己留下线索。</description>
     </item>
   </channel>
 </rss>

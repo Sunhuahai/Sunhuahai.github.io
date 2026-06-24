@@ -3,176 +3,146 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sunhuahai</title>
+    <title>悟空的博客</title>
     <meta
       name="description"
-      content="Sunhuahai 的个人博客，记录技术、阅读、生活与长期思考。"
+      content="悟空的博客，记录技术实践、阅读笔记、工具工作流和长期思考。"
     />
-    <meta property="og:title" content="Sunhuahai" />
+    <meta property="og:title" content="悟空的博客" />
     <meta
       property="og:description"
-      content="记录技术、阅读、生活与长期思考。"
+      content="记录技术实践、阅读笔记、工具工作流和长期思考。"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sunhuahai.github.io/" />
-    <meta property="og:image" content="https://github.com/Sunhuahai.png" />
-    <link rel="icon" href="https://github.com/Sunhuahai.png" />
+    <meta
+      property="og:image"
+      content="https://avatars.githubusercontent.com/u/53973980?v=4"
+    />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/53973980?v=4" />
     <link rel="stylesheet" href="assets/styles.css" />
     <script src="assets/app.js" defer></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Sunhuahai 首页">
-        <img src="https://github.com/Sunhuahai.png" alt="" />
-        <span>Sunhuahai</span>
+      <a class="brand" href="#top" aria-label="悟空的博客首页">
+        <img
+          src="https://avatars.githubusercontent.com/u/53973980?v=4"
+          alt=""
+          width="40"
+          height="40"
+        />
+        <span>悟空的博客</span>
       </a>
       <nav aria-label="主导航">
         <a href="#posts">文章</a>
         <a href="#notes">札记</a>
         <a href="#about">关于</a>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="切换深浅色主题">
-        <span aria-hidden="true">◐</span>
-      </button>
     </header>
 
     <main id="top">
       <section class="hero" aria-label="博客介绍">
-        <div class="hero-content">
-          <p class="eyebrow">个人博客</p>
-          <h1>Sunhuahai</h1>
-          <p class="intro">
-            记录技术实践、阅读笔记和一些缓慢成形的想法。写作不求热闹，只求把问题想清楚。
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#posts">阅读最新文章</a>
-            <a class="button secondary" href="feed.xml">订阅 RSS</a>
-          </div>
+        <img
+          class="profile-portrait"
+          src="https://avatars.githubusercontent.com/u/53973980?v=4"
+          alt="悟空的 GitHub 头像"
+          width="112"
+          height="112"
+        />
+        <p class="eyebrow">Sunhuahai · GitHub Pages</p>
+        <h1>悟空的博客</h1>
+        <p class="intro">
+          写技术、阅读、工具与生活中的长期问题。尽量少一点装饰，多一点可复用的思考。
+        </p>
+        <div class="hero-links" aria-label="常用链接">
+          <a href="#posts">阅读文章</a>
+          <a href="https://github.com/Sunhuahai">GitHub</a>
+          <a href="feed.xml">RSS</a>
         </div>
       </section>
 
-      <section class="section latest" id="posts">
+      <section class="section" id="posts">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Latest</p>
-            <h2>最新文章</h2>
+            <p class="eyebrow">Posts</p>
+            <h2>文章</h2>
           </div>
           <label class="search-box">
             <span class="visually-hidden">搜索文章</span>
             <input
               id="post-search"
               type="search"
-              placeholder="搜索标题、标签或摘要"
+              placeholder="搜索文章"
               autocomplete="off"
             />
           </label>
         </div>
 
-        <div class="post-grid" id="post-grid">
-          <article
-            class="post-card"
-            data-title="从 GitHub Pages 开始"
-            data-tags="github pages blog"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
-              alt="桌面上的代码编辑器"
-            />
-            <div class="post-body">
-              <div class="post-meta">
-                <time datetime="2026-05-18">2026-05-18</time>
-                <span>GitHub Pages</span>
-              </div>
-              <h3><a href="posts/hello-github-pages.html">从 GitHub Pages 开始</a></h3>
-              <p>
-                这个博客的第一篇记录：为什么选择一个轻量、可维护、无需构建流程的静态站点。
-              </p>
-            </div>
+        <div class="article-list" id="post-list">
+          <article class="article-row" data-title="从 GitHub Pages 开始" data-tags="github pages blog">
+            <a href="posts/hello-github-pages.html">
+              <time datetime="2026-06-24">2026-06-24</time>
+              <span class="article-title">从 GitHub Pages 开始</span>
+              <span class="article-summary">
+                把博客先做成一个轻量、稳定、无需构建流程的静态站点。
+              </span>
+            </a>
           </article>
 
-          <article
-            class="post-card"
-            data-title="把工具打磨成工作流"
-            data-tags="workflow tools notes"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-              alt="笔记本电脑和工作台"
-            />
-            <div class="post-body">
-              <div class="post-meta">
-                <time datetime="2026-05-18">2026-05-18</time>
-                <span>Workflow</span>
-              </div>
-              <h3><a href="posts/building-a-workflow.html">把工具打磨成工作流</a></h3>
-              <p>
-                工具本身并不会带来效率，稳定的输入、清晰的边界和可复盘的输出才会。
-              </p>
-            </div>
+          <article class="article-row" data-title="把工具打磨成工作流" data-tags="workflow tools notes">
+            <a href="posts/building-a-workflow.html">
+              <time datetime="2026-06-24">2026-06-24</time>
+              <span class="article-title">把工具打磨成工作流</span>
+              <span class="article-summary">
+                工具本身不会自动带来效率，稳定的流程才会留下复利。
+              </span>
+            </a>
           </article>
 
-          <article
-            class="post-card"
-            data-title="近期阅读清单"
-            data-tags="reading books list"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=80"
-              alt="打开的书和咖啡"
-            />
-            <div class="post-body">
-              <div class="post-meta">
-                <time datetime="2026-05-18">2026-05-18</time>
-                <span>Reading</span>
-              </div>
-              <h3><a href="posts/reading-list.html">近期阅读清单</a></h3>
-              <p>
-                用一份简短书单保存当下的兴趣，也给之后的自己留下可追踪的线索。
-              </p>
-            </div>
+          <article class="article-row" data-title="近期阅读清单" data-tags="reading books list">
+            <a href="posts/reading-list.html">
+              <time datetime="2026-06-24">2026-06-24</time>
+              <span class="article-title">近期阅读清单</span>
+              <span class="article-summary">
+                用一份简短书单保存当下的兴趣，也给之后的自己留下线索。
+              </span>
+            </a>
           </article>
         </div>
       </section>
 
-      <section class="section split" id="notes">
+      <section class="section two-column" id="notes">
         <div>
           <p class="eyebrow">Notes</p>
           <h2>札记</h2>
         </div>
         <div class="note-list">
-          <article>
-            <time datetime="2026-05-18">05-18</time>
-            <p>博客先从简单可控开始，等内容密度上来后再考虑标签页、归档页和评论系统。</p>
-          </article>
-          <article>
-            <time datetime="2026-05-18">05-18</time>
-            <p>好文章通常不是一次写完的，先留下能被继续修改的版本更重要。</p>
-          </article>
-          <article>
-            <time datetime="2026-05-18">05-18</time>
-            <p>技术记录要保留背景、取舍和失败路径，否则半年后很难复用。</p>
-          </article>
+          <p>博客先保持简单，内容密度起来后再加归档、标签和评论。</p>
+          <p>写作时保留背景、取舍和失败路径，半年后才更容易复用。</p>
+          <p>好工具应该降低切换成本，而不是制造新的维护负担。</p>
         </div>
       </section>
 
-      <section class="section about" id="about">
-        <img src="https://github.com/Sunhuahai.png" alt="Sunhuahai 的头像" />
+      <section class="section two-column about" id="about">
         <div>
           <p class="eyebrow">About</p>
-          <h2>关于这个博客</h2>
+          <h2>关于</h2>
+        </div>
+        <div>
           <p>
-            这里会放长期保存价值更高的内容：工程实践、工具配置、读书笔记、项目复盘，以及一些和日常生活有关的观察。
+            这里会放长期保存价值更高的内容：工程实践、工具配置、读书笔记、项目复盘，以及一些日常观察。
           </p>
-          <div class="link-row">
-            <a href="https://github.com/Sunhuahai">GitHub</a>
-            <a href="feed.xml">RSS</a>
-          </div>
+          <p>
+            站点托管在 GitHub Pages，没有自定义域名，访问地址是
+            <a href="https://sunhuahai.github.io/">sunhuahai.github.io</a>。
+          </p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© 2026 Sunhuahai. Built with GitHub Pages.</p>
+      <p>© 2026 悟空的博客</p>
       <a href="#top">回到顶部</a>
     </footer>
   </body>
