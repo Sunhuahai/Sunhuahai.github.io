@@ -4,3 +4,5 @@
 .paper>div{min-width:0}.paper h3,.venue,.authors{overflow-wrap:anywhere}.scientific-art{pointer-events:none}
 
 .home-posts{list-style:none;padding:0;margin:0;font-size:.86rem}.home-posts li+li{margin-top:9px}.home-posts a{display:flex;justify-content:space-between;gap:20px}.home-posts span{color:var(--muted)}
+
+.closing-grid.single-feature{grid-template-columns:1fr}

@@ -1,4 +1,5 @@
 ---
+export function getStaticPaths(){return site.blogEnabled?[{params:{index:undefined}}]:[];}
 import Base from '../../layouts/Base.astro';import {getCollection} from 'astro:content';import {site} from '../../config/site';const posts=(await getCollection('posts',p=>!p.data.draft)).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());const tags=[...new Set(posts.flatMap(p=>p.data.tags))];
 ---
 <Base title="博客"><section class="page-top"><p class="eyebrow">Notes & essays</p><h1>{site.labels.blog}</h1><p>研究中的发现，计算中的思考。</p></section>{posts.length===0?<div class="empty"><span class="empty-symbol">∴</span><h2>{site.labels.emptyBlog}</h2><p>{site.labels.emptyBlogBody}</p></div>:<><div class="filter"><label for="tag">{site.labels.tags}</label><select id="tag"><option value="all">{site.labels.all}</option>{tags.map(t=><option>{t}</option>)}</select></div>{posts.map(p=><article class="post-list" data-tags={JSON.stringify(p.data.tags)}><time>{p.data.date.toISOString().slice(0,10)}</time><h2><a href={`/blog/${p.id}/`}>{p.data.title}</a></h2><p>{p.data.description}</p><small>{p.data.tags.join(' · ')}</small></article>)}</>}</Base>

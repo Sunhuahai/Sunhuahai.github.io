@@ -10,6 +10,8 @@ export const site = {
  orcid: 'https://orcid.org/0009-0003-2386-133X',
  /** Public status domain stays inactive until DNS/ICP/routing acceptance. */
  statusPublic: false,
+ /** Generate blog routes and show blog navigation/home content when enabled. */
+ blogEnabled: false,
  /** Locally packaged math CSS; math rendering enabled at build time. */
  math: true,
  nav: [{label:'首页',href:'/'},{label:'关于',href:'/about/'},{label:'论文',href:'/publications/'},{label:'项目',href:'/projects/'},{label:'博客',href:'/blog/'},{label:'状态',href:'/status/'}],

@@ -6,3 +6,5 @@ Projects: src/content/projects/*.md; publication_key required and public default
 Papers: src/data/papers.bib and publication-proof.yml, checked against frozen policy/ initial whitelist on every build. See PUBLICATION_POLICY.md before extending.
 Theme uses CSS variables and data-theme, responsive navigation with keyboard support.
 No analytics, comments, newsletter, email, GitHub identity, citation metrics or remote fonts.
+
+Blog visibility: `src/config/site.ts` → `blogEnabled`. False removes navigation, home article links, blog index/detail routes and sitemap entries. Article source files remain unchanged. Set true and redeploy to restore.
