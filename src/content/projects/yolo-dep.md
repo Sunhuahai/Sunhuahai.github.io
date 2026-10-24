@@ -4,7 +4,7 @@ slug: "yolo-dep"
 publication_key: "Xiao2026YOLODEP"
 category: "Published research"
 year: 2026
-public: true
+public: false
 cover: ""
 ---
 # Semi-supervised YOLO-DEP
