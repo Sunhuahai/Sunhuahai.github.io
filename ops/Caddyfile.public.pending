@@ -1,0 +1,14 @@
+# INACTIVE. Use only after ICP approval, identity review and verified DNS.
+# Merge into existing Caddy only with approval for that service change.
+huahaiatlas.com {
+ root * /srv/huahaiatlas/current
+ encode zstd gzip
+ header X-Content-Type-Options nosniff
+ file_server
+}
+www.huahaiatlas.com {
+ redir https://huahaiatlas.com{uri} 301
+}
+status.huahaiatlas.com {
+ reverse_proxy 127.0.0.1:18081
+}

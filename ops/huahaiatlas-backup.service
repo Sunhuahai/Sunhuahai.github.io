@@ -1,0 +1,7 @@
+[Unit]
+Description=Consistent Huahai Atlas backup
+After=docker.service
+[Service]
+Type=oneshot
+ExecStart=/srv/huahaiatlas/ops/backup.sh
+UMask=0077

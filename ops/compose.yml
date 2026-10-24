@@ -1,0 +1,19 @@
+name: huahaiatlas
+services:
+  kuma:
+    image: ghcr.io/louislam/uptime-kuma:2-slim
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      UPTIME_KUMA_HOST: 127.0.0.1
+      UPTIME_KUMA_PORT: '3001'
+      UPTIME_KUMA_DB_TYPE: sqlite
+    volumes:
+      - ./data:/app/data
+    mem_limit: 512m
+    cpus: 0.75
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '3'

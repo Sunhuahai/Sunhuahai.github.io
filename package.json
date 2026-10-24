@@ -1,16 +1,7 @@
 {
-  "name": "as-folio",
-  "description": "A clean, responsive Astro theme for academics and researchers",
+  "name": "huahai-atlas",
+  "description": "Huahai Atlas academic website",
   "version": "2.0.1",
-  "author": "Dadang NH <hello@dadangnh.com>",
-  "homepage": "https://github.com/dadangnh/as-folio",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dadangnh/as-folio"
-  },
-  "bugs": {
-    "url": "https://github.com/dadangnh/as-folio/issues"
-  },
   "keywords": [
     "astro",
     "astro-theme",
@@ -45,26 +36,11 @@
     "astro": ">=6.4.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "prebuild": "node --strip-types scripts/update-citations.ts",
-    "build": "astro build --timings && pagefind --site dist",
-    "preview": "astro preview",
-    "astro": "astro",
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "node --experimental-strip-types scripts/validate-publications.ts && node scripts/clean-content-cache.mjs && astro build && pagefind --site dist",
     "check": "astro check",
-    "format": "prettier --write .",
-    "lint": "eslint . --fix",
-    "lint:ci": "eslint . --quiet",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "test:types": "astro check && tsc --noEmit",
-    "test:e2e": "playwright test",
-    "test:e2e:ci": "playwright test --reporter=junit",
-    "test:all": "yarn test:types && yarn lint:ci && yarn test && yarn test:e2e",
-    "validate": "yarn test:all",
-    "prepare": "husky",
-    "citations:update": "node --strip-types scripts/update-citations.ts"
+    "test": "node --experimental-strip-types --test scripts/publication-policy.test.ts && node scripts/test-dist.mjs",
+    "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.2.0",
@@ -129,5 +105,6 @@
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.61.1",
     "vitest": "^4.1.9"
-  }
+  },
+  "private": true
 }

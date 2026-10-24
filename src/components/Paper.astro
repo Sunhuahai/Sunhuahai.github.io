@@ -1,0 +1,8 @@
+---
+import {site} from '../config/site';
+import type {papers} from '../utils/publications';
+interface Props {paper:typeof papers[number];index?:number}
+const {paper:p,index=0}=Astro.props;
+---
+<article class="paper" data-year={p.year}><div class="paper-index">{String(index+1).padStart(2,'0')}<span>{p.year}</span></div><div><h3>{p.title}</h3><p class="authors">{p.authors.map((a,i)=><Fragment>{i>0?', ':''}{a===site.englishName?<strong>{a}</strong>:a}</Fragment>)}</p><p class="venue"><em>{p.journal}</em> {p.volume}({p.issue}), {p.pages} · {p.year}</p><div class="paper-links"><a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">{site.labels.doi}</a><details><summary>{site.labels.bib}</summary><button class="copy-bib" data-copy={site.labels.copied} data-failed={site.labels.copyFailed}>{site.labels.copy}</button><pre><code>{p.bib}</code></pre></details></div></div></article>
+<script>document.querySelectorAll<HTMLButtonElement>('.copy-bib').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.parentElement?.querySelector('code')?.textContent||'');b.textContent=b.dataset.copy||''}catch{b.textContent=b.dataset.failed||''}}));</script>

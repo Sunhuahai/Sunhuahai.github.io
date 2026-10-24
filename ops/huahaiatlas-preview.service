@@ -1,0 +1,17 @@
+[Unit]
+Description=Huahai Atlas private Caddy preview
+After=network.target
+[Service]
+User=caddy
+Group=caddy
+ExecStart=/usr/bin/caddy run --config /srv/huahaiatlas/config/Caddyfile.private --adapter caddyfile
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/huahaiatlas/logs
+MemoryMax=192M
+[Install]
+WantedBy=multi-user.target

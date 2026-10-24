@@ -1,0 +1,29 @@
+# Publication allowlist. Do not publish any record without a matching
+# BibTeX key, publication_status: published, and a verifiable official source.
+schema_version: 1
+verified_on: "2026-10-24"
+records:
+  - bibkey: Sun2026ScatterFusionNet
+    kind: journal_article
+    publication_status: published
+    evidence_url: "https://pubmed.ncbi.nlm.nih.gov/42102855/"
+    publisher_url: "https://doi.org/10.1088/1361-6560/ae6af7"
+    verified_on: "2026-10-24"
+    public_pdf_allowed: false
+    note: "PubMed confirms authors, PMB vol. 71 issue 10, 2026, DOI; 105027 is the publisher article number."
+  - bibkey: Xiao2026YOLODEP
+    kind: journal_article
+    publication_status: published
+    evidence_url: "https://journals.sagepub.com/doi/10.1177/08953996261439069"
+    publisher_url: "https://doi.org/10.1177/08953996261439069"
+    verified_on: "2026-10-24"
+    public_pdf_allowed: false
+    note: "Official Sage journal page: 2026 volume 34 issue 5, pages 704-719; online June 30, 2026."
+  - bibkey: Li2024DDENoise
+    kind: journal_article
+    publication_status: published
+    evidence_url: "https://pubmed.ncbi.nlm.nih.gov/39137803/"
+    publisher_url: "https://doi.org/10.1088/1361-6560/ad6eda"
+    verified_on: "2026-10-24"
+    public_pdf_allowed: false
+    note: "PubMed confirms 2024 PMB volume 69 issue 18, DOI; 185004 is publisher article number."
