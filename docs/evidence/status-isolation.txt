@@ -1,0 +1,21 @@
+safe / 200
+safe /status/atlas 200
+safe /api/status-page/atlas 200
+safe /api/status-page/heartbeat/atlas 200
+blocked /dashboard 404
+blocked /login 404
+blocked /setup 404
+blocked /setup-database 404
+blocked /manage-status-page 404
+blocked /metrics 404
+blocked /socket.io/?EIO=4&transport=polling 404
+blocked /api/status-page 404
+blocked /api/monitor 404
+blocked /status/atlas/edit 404
+blocked /status/atlas/../../dashboard 404
+blocked /assets/../dashboard 404
+blocked /assets/%2e%2e/dashboard 404
+blocked /status/atlas%2f..%2f..%2fdashboard 404
+Anonymous status route and payload isolation passed.
+External application probe: SSH banner received; no HTTP response from 3001/18080/18081.
+TCP-connect alone is inconclusive in this network; isolation also verified via server ss loopback bindings.

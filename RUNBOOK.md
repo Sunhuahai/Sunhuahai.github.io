@@ -64,3 +64,5 @@ ssh tencent 'sudo /srv/huahaiatlas/ops/restore-isolated.sh /srv/huahaiatlas/back
 ## 告警状态
 
 未提供接收渠道和凭据，通知配置为空，未发送测试消息。同机 Kuma 无法在整台服务器宕机时自行告警；外部探测/独立保管备份应在用户选择渠道与账户授权后再启用，不擅自创建外部账号。
+
+当前用户名为 `atlas-admin`。查看初始化凭据可在自己的可信终端执行：`ssh tencent 'cat /srv/huahaiatlas/secrets/kuma-admin.json'`。该输出不要转发到聊天或日志。自行修改密码后，原 bootstrap 凭据文件也应更新或安全处理；不要把旧密码当成仍有效的凭据。

@@ -1,0 +1,20 @@
+Restored SQLite integrity OK; monitors: 1
+Restored current release exists. Live services unchanged.
+0c40ae3fb4455872cb4db8763fb33b2099b449cfb2c9efd726535d4bbaeae7bd
+Restored Kuma service and monitor configuration verified on isolated loopback port
+huahaiatlas-restore-test
+huahaiatlas-restore-test
+NEXT                        LEFT LAST PASSED UNIT                     ACTIVATES
+Sun 2026-10-25 04:21:37 CST  11h -         - huahaiatlas-backup.timer huahaiatlas-backup.service
+
+1 timers listed.
+Pass --all to see loaded but inactive timers, too.
+huahaiatlas-kuma-1 CPU=0.52% RAM=109.2MiB / 512MiB
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       918Mi       266Mi       2.2Mi       977Mi       1.0Gi
+Swap:          1.9Gi       126Mi       1.8Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda2        50G   14G   34G  30% /
+194M	/srv/huahaiatlas
+922M	/var/lib/containerd
+/etc/caddy/Caddyfile: OK

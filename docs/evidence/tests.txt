@@ -1,0 +1,16 @@
+✔ whitelist passes (3.347917ms)
+✔ reject altered author (1.062375ms)
+✔ reject extra paper (0.31125ms)
+✔ reject duplicate (0.257834ms)
+✔ reject accepted status (0.353291ms)
+✔ reject invalid evidence (0.235125ms)
+✔ reject PDF hosting (0.298833ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 142.88375
+Static acceptance passed: 10 pages, 3 papers, 3 project details, no demo/private data, local assets resolve.

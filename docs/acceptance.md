@@ -40,3 +40,9 @@
 ## 尚待用户
 
 ICP备案审核通过及真实备案号；DNS 配置；中英文身份文案公开确认；选择告警渠道与安全录入凭据。云侧防火墙控制台当前无权限，未变更；公开前仍需检查 80/443。
+
+## 最终部署与回滚复核
+
+已实际执行 `bash ops/deploy.sh`：check、build、7 项门禁测试、静态产物测试均通过。活动 release 为 `20261024T084321Z-9622ea6`。回滚至 `20261024-clean` 后再切回活动 release，两次 HTTP 健康检查成功。最终博客仍为空态。
+
+追加采样：Kuma CPU 0.44%、112.3 MiB；独立 Caddy MemoryCurrent 11,132,928 字节，服务 active/enabled；Kuma restart=unless-stopped。具体测试输出见 evidence/。
