@@ -1,7 +1,7 @@
 name: huahaiatlas
 services:
   kuma:
-    image: ghcr.io/louislam/uptime-kuma:2-slim
+    image: ghcr.io/louislam/uptime-kuma:2-slim@sha256:a8698e0664a36bcedba4efa5ed745c5b2aaa6488d2d8e866b5f054c8b19ad84b
     restart: unless-stopped
     network_mode: host
     environment:

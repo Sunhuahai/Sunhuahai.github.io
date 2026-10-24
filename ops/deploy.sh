@@ -18,6 +18,13 @@ old=$(readlink "$base/current" || true)
 [ -z "$old" ] || { ln -s "$old" "$base/previous.next"; mv -Tf "$base/previous.next" "$base/previous"; }
 ln -s "releases/$release" "$base/current.next"
 mv -Tf "$base/current.next" "$base/current"
-curl -fsS http://127.0.0.1:18080/ >/dev/null
+if ! curl -fsS http://127.0.0.1:18080/ >/dev/null; then
+  if [ -n "$old" ]; then
+    ln -s "$old" "$base/current.rollback"
+    mv -Tf "$base/current.rollback" "$base/current"
+  fi
+  echo 'Health check failed; previous release restored' >&2
+  exit 1
+fi
 printf 'Release active: %s\n' "$release"
 REMOTE

@@ -11,6 +11,7 @@ trap 'docker compose start kuma >/dev/null' EXIT
 tar -C "$base" -czf "$base/backups/atlas-$stamp.tar.gz.partial" config monitoring ops docs current releases
 mv "$base/backups/atlas-$stamp.tar.gz.partial" "$base/backups/atlas-$stamp.tar.gz"
 sha256sum "$base/backups/atlas-$stamp.tar.gz" > "$base/backups/atlas-$stamp.tar.gz.sha256"
+chown ubuntu:ubuntu "$base/backups/atlas-$stamp.tar.gz" "$base/backups/atlas-$stamp.tar.gz.sha256"
 docker compose start kuma
 trap - EXIT
 # No automatic deletion: review retention and free space regularly.
