@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [ -n "$(git status --porcelain)" ]; then
+  echo 'Refusing to deploy: working tree has uncommitted changes or untracked files' >&2
+  git status --short >&2
+  exit 1
+fi
 node .yarn/releases/yarn-4.13.0.cjs check
 node .yarn/releases/yarn-4.13.0.cjs build
 node .yarn/releases/yarn-4.13.0.cjs test
