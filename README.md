@@ -2,7 +2,7 @@
 
 Astro 6 static academic website, adapted from MIT as-folio 2.0.1 at commit 6a30d3e835830233f655820d42cde41d9b61ed2c. See LICENSE and docs/UPSTREAM.md. Original handoff remains untouched in the adjacent private directory.
 
-公网站点由 GitHub Pages 托管（仓库 [Sunhuahai/Sunhuahai.github.io](https://github.com/Sunhuahai/Sunhuahai.github.io)，Actions 构建部署），当前地址 https://sunhuahai.github.io/ 。自定义域名 huahaiatlas.com 尚未指向 GitHub。源码工作副本在 omarchy：`/home/venti/Projects/huahai-atlas`（分支 `github-pages`）。旧静态站备份在同仓库 `legacy-static` 分支。腾讯云预览机仍可用，但不再作为公网入口。
+公网站点由 GitHub Pages 托管（仓库 [Sunhuahai/Sunhuahai.github.io](https://github.com/Sunhuahai/Sunhuahai.github.io)，Actions 构建部署），自定义域名 https://huahaiatlas.com/ （www 指向 apex）。源码工作副本在 omarchy：`/home/venti/Projects/huahai-atlas`（分支 `github-pages`）。旧静态站备份在同仓库 `legacy-static` 分支。腾讯云预览机仍可用，但不再作为公网入口。
 
 ## 本地运行
 

@@ -33,9 +33,7 @@ jobs:
       - name: Build site
         run: yarn build
         env:
-          # User/org page on github.io until huahaiatlas.com DNS is pointed here.
-          # Later: set repository variable ASTRO_SITE=https://huahaiatlas.com
-          ASTRO_SITE: ${{ vars.ASTRO_SITE || 'https://sunhuahai.github.io' }}
+          ASTRO_SITE: ${{ vars.ASTRO_SITE || 'https://huahaiatlas.com' }}
           ASTRO_BASE: ${{ vars.ASTRO_BASE || '' }}
 
       - name: Test dist
