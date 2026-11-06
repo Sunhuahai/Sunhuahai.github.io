@@ -1,0 +1,29 @@
+# DRAFT ONLY — not installed into the site.
+# Schema matches /workspace/huahai-atlas/site/src/utils/conferences.ts
+# types: oral | poster | proceedings
+# authors use display form "Huahai Sun" (site.englishName)
+# Requires Huahai authorization before copying to src/data/conferences.yml
+records:
+  - authors:
+      - Huahai Sun
+      - Liang Li
+    title: Research on x-ray induced acoustic computerized tomography in vascular imaging
+    event: Developments in X-Ray Tomography XV (SPIE Optical Engineering + Applications / Optics + Photonics 2024)
+    location: San Diego, California, USA
+    date: "2024-08"
+    type: proceedings
+    url: "https://doi.org/10.1117/12.3027548"
+    doi: "10.1117/12.3027548"
+    note: "Proc. SPIE vol. 13152; Crossref page field 55; publisher record dated 2024-10-04. Event dates in Crossref 2024-08-18–23; proceedings.com lists 2024-08-19–22. Conference presentation format (oral vs poster) not verified from an official program listing — recorded only as formally published proceedings. Affiliation Tsinghua University stated on publisher abstract page."
+
+  - authors:
+      - Huahai Sun
+      - Wenyu Zhang
+      - Liang Li
+    title: "DiffuCoCT: Dual-Domain Collaborative Diffusion Network for Dual-Detector CT Scatter Correction"
+    event: The 18th International Meeting on Fully Three-Dimensional Image Reconstruction in Radiology and Nuclear Medicine (Fully3D 2025)
+    location: Shanghai, China
+    date: "2025-05"
+    type: oral
+    url: "https://hqlab.sjtu.edu.cn/fully3d-2025/program"
+    note: "Listed in the official oral program PDF (https://hqlab.sjtu.edu.cn/assets/Program_oral-DTM5bS1N.pdf) as a 16:40–17:00 oral talk. Conference dates 2025-05-27–30 (organizer site). No DOI and no Crossref/OpenAlex proceedings record for this title found as of research date. Not found in the official poster program PDF."

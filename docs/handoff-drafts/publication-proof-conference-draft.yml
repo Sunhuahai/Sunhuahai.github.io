@@ -1,0 +1,37 @@
+# DRAFT ONLY — explanatory, NOT a drop-in for src/data/publication-proof.yml
+#
+# Journal whitelist (publication-policy.ts) STILL requires:
+#   kind: journal_article
+#   BibTeX type: article
+#   evidence host in {pubmed.ncbi.nlm.nih.gov, journals.sagepub.com}
+# Conference items must NOT go into papers.bib / publication-proof.yml.
+#
+# Per PUBLICATION_POLICY.md (updated) and src/utils/conferences.ts,
+# conference records live only in src/data/conferences.yml with fields:
+#   authors, title, event, location, date, type (oral|poster|proceedings), url, optional doi/note
+# There is no separate publication-proof.yml schema for conferences in the current code.
+#
+# Suggested evidence notes for the two draft conferences.yml records:
+
+records:
+  - draft_key: Sun2024XACT
+    kind_for_conferences_yml: proceedings
+    publication_status: published_in_proceedings
+    evidence_url: "https://doi.org/10.1117/12.3027548"
+    publisher_url: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13152/3027548/Research-on-x-ray-induced-acoustic-computerized-tomography-in-vascular/10.1117/12.3027548.full"
+    crossref_type: proceedings-article
+    spie_volume: "13152"
+    verified_on: "2026-11-06"
+    public_pdf_allowed: false
+    note: "Crossref + DOI content-negotiation BibTeX; authors Huahai Sun, Liang Li; Tsinghua on publisher abstract. Article CID alphanumeric (e.g. 13152xx) not found in the partial TOC PDF retrieved from proceedings.com."
+
+  - draft_key: Sun2025DiffuCoCT
+    kind_for_conferences_yml: oral
+    publication_status: oral_only_no_doi_found
+    evidence_url: "https://hqlab.sjtu.edu.cn/fully3d-2025/program"
+    program_pdf_url: "https://hqlab.sjtu.edu.cn/assets/Program_oral-DTM5bS1N.pdf"
+    publisher_url: ""
+    doi: ""
+    verified_on: "2026-11-06"
+    public_pdf_allowed: false
+    note: "Official Fully3D 2025 oral schedule lists authors Huahai Sun, Wenyu Zhang, Liang Li and title DiffuCoCT...; slot 16:40–17:00. No DOI/proceedings article located. Do not classify as proceedings."
