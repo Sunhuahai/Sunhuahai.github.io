@@ -1,3 +1,14 @@
 # Conference talks / posters / proceedings listed under 科研 → 会议.
 # Never present these as journal papers. Requires official source URL and Huahai authorization.
-records: []
+records:
+  - authors:
+      - Huahai Sun
+      - Wenyu Zhang
+      - Liang Li
+    title: "DiffuCoCT: Dual-Domain Collaborative Diffusion Network for Dual-Detector CT Scatter Correction"
+    event: The 18th International Meeting on Fully Three-Dimensional Image Reconstruction in Radiology and Nuclear Medicine (Fully3D 2025)
+    location: Shanghai, China
+    date: "2025-05"
+    type: oral
+    url: "https://hqlab.sjtu.edu.cn/fully3d-2025/program"
+    note: "Official Fully3D 2025 oral program listing. No DOI found for this title."

@@ -33,7 +33,9 @@ export function validateConferences(yamlText:string){
   assert.ok(!/\.pdf(\?|#|$)/i.test(r.url),`${label}: no PDF links`);
   const blob=[r.title,r.event,r.location,r.url,r.note||'',r.doi||'',...r.authors].join('\n');
   assert.ok(!EMAIL_RE.test(blob),`${label}: no email`);
-  assert.ok(!PHONE_RE.test(blob),`${label}: no phone`);
+  // Ignore ISO dates and HH:MM so program notes do not trip the phone heuristic.
+  const forPhone=blob.replace(/\d{4}-\d{2}(?:-\d{2})?/g,'').replace(/\d{1,2}:\d{2}/g,'');
+  assert.ok(!PHONE_RE.test(forPhone),`${label}: no phone`);
   if(r.doi!==undefined&&r.doi!==null&&String(r.doi)!==''){
    assert.ok(typeof r.doi==='string'&&r.doi.trim()&&!r.doi.startsWith('http'),`${label}: doi should be bare DOI`);
   }

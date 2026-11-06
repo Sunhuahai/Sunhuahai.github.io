@@ -1,5 +1,7 @@
 # 服务器变更记录
 
+2026-11-06：站点图标改为说文小篆「青」（白字黑底，Commons 公有领域字形，commit ab56c23）；科研页导航由「论文」更名为「科研」，下设「文章」「会议」（commit a2d887c）；会议栏加入 Fully3D 2025 口头报告 DiffuCoCT（官方 program URL）。源码 github-pages → GitHub Pages main。未改动腾讯云预览机 Caddy/SSH/防火墙。
+
 2026-11-06：公网入口切到 GitHub Pages。DNSPod 为 huahaiatlas.com 增加 GitHub Pages A/AAAA（套餐负载均衡上限仅写入各 2 条）及 www CNAME→sunhuahai.github.io；仓库 site URL 改为 https://huahaiatlas.com，并加入 public/CNAME。未改动腾讯云预览机 Caddy/SSH/防火墙。
 
 2026-10-24：新增独立 /srv/huahaiatlas、huahaiatlas-preview.service、huahaiatlas-backup.service/timer，官方 Kuma Compose。未改动原 Caddy、SSH、防火墙或原有文件。
