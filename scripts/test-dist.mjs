@@ -9,6 +9,10 @@ assert.equal(files.filter(f=>/\.pdf$/i.test(f)).length,0);const posts=walk('src/
 const projects=walk('src/content/projects').filter(f=>f.endsWith('.md')).map(f=>({slug:f.split('/').pop().replace(/\.md$/,''),data:yaml.load(readFileSync(f,'utf8').split('---')[1])}));
 for(const p of projects)assert.equal(existsSync(`dist/projects/${p.slug}/index.html`),p.data.public===true,`Project visibility: ${p.slug}`);
 assert.ok(!readFileSync('dist/index.html','utf8').includes('华海图鉴'));
+const robots=readFileSync('dist/robots.txt','utf8');
+assert.match(robots,/Allow:\s*\//);
+assert.doesNotMatch(robots,/Disallow:\s*\/\s*$/m);
+assert.ok(robots.includes('Sitemap: https://sunhuahai.github.io/sitemap.xml'));
 assert.equal(site.url,'https://sunhuahai.github.io','Expected GitHub Pages origin until custom domain is pointed');
 for(const r of ['posts/voice-input-revolution.html','posts/writing-as-daily-practice.html','posts/why-the-past-feels-better.html'])assert.ok(existsSync('dist/'+r),r);
 console.log(`Static acceptance passed: ${html.length} pages, 3 papers, ${projects.filter(p=>p.data.public).length} public project details, no demo/private data, local assets resolve.`);
