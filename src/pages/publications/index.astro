@@ -1,6 +1,59 @@
 ---
-import Base from '../../layouts/Base.astro';import Paper from '../../components/Paper.astro';import {papers} from '../../utils/publications';import {site} from '../../config/site';
+import Base from '../../layouts/Base.astro';
+import Paper from '../../components/Paper.astro';
+import Conference from '../../components/Conference.astro';
+import {papers} from '../../utils/publications';
+import {conferences} from '../../utils/conferences';
+import {site} from '../../config/site';
 const years=[...new Set(papers.map(p=>p.year))];
 ---
-<Base title={site.labels.papers}><section class="page-top"><p class="eyebrow">Publications</p><h1>{site.labels.papers}</h1><p>期刊论文 · 完整作者与正式出版记录</p></section><div class="filter"><label for="year">{site.labels.year}</label><select id="year"><option value="all">{site.labels.all}</option>{years.map(y=><option value={y}>{y}</option>)}</select><a href="/publications.bib" download>{site.labels.bib} ↓</a></div><section>{papers.map((paper,index)=><Paper {paper} {index}/>)}</section><p class="muted note">{papers.length} 篇正式发表期刊论文</p></Base>
-<script>document.querySelector<HTMLSelectElement>('#year')?.addEventListener('change',e=>{const year=(e.target as HTMLSelectElement).value;document.querySelectorAll<HTMLElement>('[data-year]').forEach(p=>p.hidden=year!=='all'&&p.dataset.year!==year)});</script>
+<Base title={site.labels.research}>
+<section class="page-top">
+  <p class="eyebrow">Research</p>
+  <h1>{site.labels.research}</h1>
+  <p>期刊文章与会议报告 · 正式公开记录</p>
+  <nav class="section-jump" aria-label="页面栏目">
+    <a href="#articles">{site.labels.articles}</a>
+    {conferences.length > 0 ? <a href="#conferences">{site.labels.conferences}</a> : null}
+  </nav>
+</section>
+
+<section id="articles" class="research-section">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Articles</p>
+      <h2>{site.labels.articles}</h2>
+    </div>
+  </div>
+  <div class="filter">
+    <label for="year">{site.labels.year}</label>
+    <select id="year">
+      <option value="all">{site.labels.all}</option>
+      {years.map(y=><option value={y}>{y}</option>)}
+    </select>
+    <a href="/publications.bib" download>{site.labels.bib} ↓</a>
+  </div>
+  <div>{papers.map((paper,index)=><Paper {paper} {index}/>)}</div>
+  <p class="muted note">{papers.length} 篇正式发表期刊文章</p>
+</section>
+
+{conferences.length > 0 ? (
+<section id="conferences" class="research-section">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Conferences</p>
+      <h2>{site.labels.conferences}</h2>
+    </div>
+  </div>
+  <p class="muted section-lead">口头报告、海报与会议论文；不作为期刊论文列出。</p>
+  <div>{conferences.map((item,index)=><Conference {item} {index}/>)}</div>
+  <p class="muted note">{conferences.length} 条会议记录</p>
+</section>
+) : null}
+</Base>
+<script>
+document.querySelector<HTMLSelectElement>('#year')?.addEventListener('change',e=>{
+  const year=(e.target as HTMLSelectElement).value;
+  document.querySelectorAll<HTMLElement>('#articles [data-year]').forEach(p=>p.hidden=year!=='all'&&p.dataset.year!==year);
+});
+</script>

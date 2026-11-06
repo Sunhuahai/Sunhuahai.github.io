@@ -1,0 +1,21 @@
+---
+import {site} from '../config/site';
+import {conferenceTypeLabel, type Conference} from '../utils/conferences';
+interface Props {item: Conference; index?: number}
+const {item:c, index=0}=Astro.props;
+const badge = conferenceTypeLabel[c.type];
+---
+<article class="paper conference" data-year={c.date.slice(0,4)}>
+  <div class="paper-index">{String(index+1).padStart(2,'0')}<span>{c.date}</span></div>
+  <div>
+    <div class="conf-meta"><span class={`conf-badge conf-${c.type}`}>{badge}</span></div>
+    <h3>{c.title}</h3>
+    <p class="authors">{c.authors.map((a,i)=><Fragment>{i>0?', ':''}{a===site.englishName?<strong>{a}</strong>:a}</Fragment>)}</p>
+    <p class="venue"><em>{c.event}</em> · {c.location} · {c.date}</p>
+    {c.note ? <p class="conf-note">{c.note}</p> : null}
+    <div class="paper-links">
+      <a href={c.url} target="_blank" rel="noopener noreferrer">会议主页 ↗</a>
+      {c.doi ? <a href={`https://doi.org/${c.doi}`} target="_blank" rel="noopener noreferrer">{site.labels.doi}</a> : null}
+    </div>
+  </div>
+</article>

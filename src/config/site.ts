@@ -14,7 +14,18 @@ export const site = {
  blogEnabled: true,
  /** Locally packaged math CSS; math rendering enabled at build time. */
  math: true,
- nav: [{label:'首页',href:'/'},{label:'关于',href:'/about/'},{label:'论文',href:'/publications/'},{label:'项目',href:'/projects/'},{label:'博客',href:'/blog/'},{label:'状态',href:'/status/'}],
+ nav: [{label:'首页',href:'/'},{label:'关于',href:'/about/'},{label:'科研',href:'/publications/'},{label:'项目',href:'/projects/'},{label:'博客',href:'/blog/'},{label:'状态',href:'/status/'}],
  interests: ['X-ray CT & Spectral Imaging','Physics-Informed Computational Imaging','Inverse Problems & Numerical Optimization','Machine Learning & Efficient Inference'],
- labels: { skip:'跳至内容', theme:'切换深浅色主题', menu:'导航菜单', papers:'已发表论文', projects:'公开研究项目', blog:'研究与随笔', allPapers:'全部论文', allProjects:'浏览项目', bib:'BibTeX', copy:'复制引用', copied:'已复制', copyFailed:'请手动复制下方引用', doi:'DOI ↗', evidence:'出版记录 ↗', year:'年份', all:'全部', emptyBlog:'文章正在酝酿中', emptyBlogBody:'这里将记录研究、数学与计算的思考。暂时没有公开文章。', back:'返回列表', tags:'标签', contents:'目录', statusTitle:'服务状态', statusPending:'公开状态页将在网站正式上线后开放。', statusBody:'网站当前处于私有预览阶段。', footer:'探索物理、数学与计算的交汇处。', notFound:'页面未找到', home:'返回首页' },
+ labels: {
+  skip:'跳至内容', theme:'切换深浅色主题', menu:'导航菜单',
+  research:'科研', articles:'文章', conferences:'会议',
+  papers:'已发表论文', allPapers:'全部科研', allArticles:'全部文章',
+  projects:'公开研究项目', blog:'研究与随笔', allProjects:'浏览项目',
+  bib:'BibTeX', copy:'复制引用', copied:'已复制', copyFailed:'请手动复制下方引用',
+  doi:'DOI ↗', evidence:'出版记录 ↗', year:'年份', all:'全部',
+  emptyBlog:'文章正在酝酿中', emptyBlogBody:'这里将记录研究、数学与计算的思考。暂时没有公开文章。',
+  back:'返回列表', tags:'标签', contents:'目录',
+  statusTitle:'服务状态', statusPending:'公开状态页将在网站正式上线后开放。', statusBody:'网站当前处于私有预览阶段。',
+  footer:'探索物理、数学与计算的交汇处。', notFound:'页面未找到', home:'返回首页'
+ },
 } as const;
