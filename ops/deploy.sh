@@ -1,4 +1,8 @@
 #!/bin/bash
+# NOTE: This script deploys to the Tencent Cloud preview host (ssh tencent).
+# Public hosting is moving to GitHub Pages (.github/workflows/deploy-pages.yml).
+# Keep this script for rollback/history; do not use it for the public site.
+
 set -euo pipefail
 cd "$(dirname "$0")/.."
 if [ -n "$(git status --porcelain)" ]; then

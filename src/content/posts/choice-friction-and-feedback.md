@@ -3,7 +3,7 @@ title: "选择、摩擦与反馈"
 date: 2026-08-05
 description: "从游戏选择和写作流程出发，思考目标、行动成本与真实反馈如何影响持续行动。"
 tags: ["生活", "思考"]
-draft: false
+draft: true
 math: false
 toc: true
 ---

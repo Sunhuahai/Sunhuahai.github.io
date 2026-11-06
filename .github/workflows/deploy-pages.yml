@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main, github-pages]
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Check
+        run: yarn check
+
+      - name: Build site
+        run: yarn build
+        env:
+          # User/org page on github.io until huahaiatlas.com DNS is pointed here.
+          # Later: set repository variable ASTRO_SITE=https://huahaiatlas.com
+          ASTRO_SITE: ${{ vars.ASTRO_SITE || 'https://sunhuahai.github.io' }}
+          ASTRO_BASE: ${{ vars.ASTRO_BASE || '' }}
+
+      - name: Test dist
+        run: yarn test
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

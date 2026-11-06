@@ -1,7 +1,8 @@
 /** Identity/copy approved for private preview; public launch requires biography review. */
 export const site = {
  title: 'Huahai Atlas', chineseTitle: '华海图鉴', name: '孙华海', englishName: 'Huahai Sun',
- url: 'https://huahaiatlas.com', subtitle: 'Physics, Mathematics & Computation',
+ /** GitHub Pages user site for now; switch back to https://huahaiatlas.com after DNS points here. */
+ url: 'https://sunhuahai.github.io', subtitle: 'Physics, Mathematics & Computation',
  description: '孙华海的学术主页：X 射线计算成像、物理约束建模与机器学习。',
  role: '清华大学 · 工程物理系 · 博士研究生',
  bio: "我是孙华海，目前在清华大学攻读核科学与技术博士学位。我关注如何结合成像物理、统计建模和机器学习，实现更可靠、更高效的 X 射线 CT 定量成像；也对大模型推理与高效计算系统感兴趣。",
@@ -11,7 +12,7 @@ export const site = {
  /** Public status domain stays inactive until DNS/ICP/routing acceptance. */
  statusPublic: false,
  /** Generate blog routes and show blog navigation/home content when enabled. */
- blogEnabled: false,
+ blogEnabled: true,
  /** Locally packaged math CSS; math rendering enabled at build time. */
  math: true,
  nav: [{label:'首页',href:'/'},{label:'关于',href:'/about/'},{label:'论文',href:'/publications/'},{label:'项目',href:'/projects/'},{label:'博客',href:'/blog/'},{label:'状态',href:'/status/'}],
