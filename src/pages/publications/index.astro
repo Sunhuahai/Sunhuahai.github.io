@@ -5,9 +5,10 @@ import Conference from '../../components/Conference.astro';
 import {papers} from '../../utils/publications';
 import {conferences} from '../../utils/conferences';
 import {site} from '../../config/site';
+import {scholarlyArticleGraph} from '../../utils/seo';
 const years=[...new Set(papers.map(p=>p.year))];
 ---
-<Base title={site.labels.research}>
+<Base title={site.labels.research} description={site.pages.publications} jsonLd={scholarlyArticleGraph(papers)}>
 <section class="page-top">
   <p class="eyebrow">Research</p>
   <h1>{site.labels.research}</h1>

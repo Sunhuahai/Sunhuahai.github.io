@@ -1,4 +1,4 @@
 ---
 import Base from '../layouts/Base.astro';import {site} from '../config/site';
 ---
-<Base title={site.labels.notFound}><div class="empty"><p class="eyebrow">404</p><h1>{site.labels.notFound}</h1><a href="/">{site.labels.home} →</a></div></Base>
+<Base title={site.labels.notFound} robots="noindex"><div class="empty"><p class="eyebrow">404</p><h1>{site.labels.notFound}</h1><a href="/">{site.labels.home} →</a></div></Base>
