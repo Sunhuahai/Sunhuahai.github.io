@@ -1,5 +1,7 @@
 # 服务器变更记录
 
+2026-11-07：分支 `cursor/seo-share-metadata-7a38`（未合并、未发布，未推 main）。技术向分享与检索元数据：canonical 固定为 https://huahaiatlas.com 的目录尾斜杠并去掉查询串；博客文章 `og:type=article`，`article:published_time` 与文内日期同一天，`article:author` 为已公开 ORCID；首页与关于页 Person JSON-LD（姓名、英文名、主页、ORCID）；科研页与公开项目页 ScholarlyArticle JSON-LD（仅 `papers.bib` 三篇期刊文章的题名、作者、期刊卷期页、年份与 DOI）。会议口头报告不进入 ScholarlyArticle。404 增加 `noindex`。未改首页标题、各页 description、状态页文案与主导航，未换分享图，未改篆文「青」图标，未改论文/会议数据、工作流或 DNS。未部署。
+
 2026-11-06：增加 HANDOFF.md 与 docs/handoff-drafts/（SPIE 等未入库调研草稿），供 omarchy 本机 Hermes Agent 交接；无站点内容改动。源码 github-pages → origin / GitHub Pages main。未改动腾讯云预览机 Caddy/SSH/防火墙。
 
 

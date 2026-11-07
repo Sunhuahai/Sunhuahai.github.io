@@ -1,6 +1,6 @@
 ---
-import Base from '../../layouts/Base.astro';import Paper from '../../components/Paper.astro';import {getCollection,render} from 'astro:content';import {papers} from '../../utils/publications';import {site} from '../../config/site';
+import Base from '../../layouts/Base.astro';import Paper from '../../components/Paper.astro';import {getCollection,render} from 'astro:content';import {papers} from '../../utils/publications';import {site} from '../../config/site';import {scholarlyArticleGraph} from '../../utils/seo';
 export async function getStaticPaths(){return (await getCollection('projects',p=>p.data.public)).map(entry=>({params:{slug:entry.id},props:{entry}}));}
 const {entry}=Astro.props;const {Content}=await render(entry);const paper=papers.find(p=>p.key===entry.data.publication_key);if(!paper)throw Error('Project requires verified publication');
 ---
-<Base title={entry.data.title}><section class="page-top"><a class="text-link" href="/projects/">← {site.labels.back}</a><p class="eyebrow">{entry.data.category} · {entry.data.year}</p><h1>{entry.data.title}</h1></section><article class="prose"><Content/></article><Paper {paper}/></Base>
+<Base title={entry.data.title} jsonLd={scholarlyArticleGraph([paper])}><section class="page-top"><a class="text-link" href="/projects/">← {site.labels.back}</a><p class="eyebrow">{entry.data.category} · {entry.data.year}</p><h1>{entry.data.title}</h1></section><article class="prose"><Content/></article><Paper {paper}/></Base>

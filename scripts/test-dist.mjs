@@ -30,4 +30,70 @@ assert.doesNotMatch(robots,/Disallow:\s*\/\s*$/m);
 assert.ok(robots.includes('Sitemap: https://huahaiatlas.com/sitemap.xml'));
 assert.equal(site.url,'https://huahaiatlas.com','Expected custom domain origin');
 for(const r of ['posts/voice-input-revolution.html','posts/writing-as-daily-practice.html','posts/why-the-past-feels-better.html'])assert.ok(existsSync('dist/'+r),r);
+
+const pages=html.filter(f=>!f.includes('pagefind')&&!f.includes('/posts/'));
+const metaContent=(s,attr,name)=>s.match(new RegExp(`<meta ${attr}="${name}" content="([^"]*)"`))?.[1];
+const sharedDescription='孙华海的学术主页：X 射线计算成像、物理约束建模与机器学习。';
+for(const rel of ['index.html','about/index.html','publications/index.html','blog/index.html','projects/index.html','status/index.html']){
+  assert.equal(metaContent(readFileSync('dist/'+rel,'utf8'),'name','description'),sharedDescription,rel);
+}
+assert.match(home,/<title>Huahai Atlas<\/title>/);
+assert.match(home,/property="og:type" content="website"/);
+assert.match(home,/property="og:site_name" content="Huahai Atlas"/);
+assert.match(home,/property="og:image" content="https:\/\/huahaiatlas\.com\/assets\/avatar-illustrated\.webp"/);
+assert.match(home,/property="og:image:width" content="960"/);
+assert.match(home,/property="og:image:height" content="960"/);
+assert.match(home,/name="twitter:card" content="summary"/);
+assert.match(home,/rel="alternate" type="application\/rss\+xml"[^>]*href="https:\/\/huahaiatlas\.com\/rss\.xml"/);
+assert.match(home,/href="\/favicon\.svg"/);
+assert.match(readFileSync('dist/status/index.html','utf8'),/网站当前处于私有预览阶段/);
+assert.match(readFileSync('dist/status/index.html','utf8'),/href="\/status\/"/);
+const notFound=readFileSync('dist/404.html','utf8');
+assert.match(notFound,/name="robots" content="noindex"/);
+for(const f of pages){
+  if(f.endsWith('/404.html')||f.endsWith('dist/404.html'))continue;
+  assert.doesNotMatch(readFileSync(f,'utf8'),/noindex/,f);
+}
+for(const f of pages){
+  const s=readFileSync(f,'utf8');
+  const canons=[...s.matchAll(/<link rel="canonical" href="([^"]+)"/g)].map(m=>m[1]);
+  assert.equal(canons.length,1,f);
+  assert.match(canons[0],/^https:\/\/huahaiatlas\.com\//,f);
+  assert.doesNotMatch(canons[0],/[?#]|www\./,f);
+  assert.ok(canons[0].endsWith('/'),f);
+  assert.equal(metaContent(s,'property','og:url'),canons[0],f);
+}
+function jsonLd(s){return [...s.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));}
+const homeLd=jsonLd(home);
+assert.equal(homeLd.length,1);
+assert.equal(homeLd[0]['@type'],'Person');
+assert.equal(homeLd[0].name,'孙华海');
+assert.deepEqual(homeLd[0].sameAs,['https://orcid.org/0009-0003-2386-133X']);
+assert.equal(JSON.stringify(homeLd).includes('ScholarlyArticle'),false);
+const pubLd=jsonLd(pub);
+const pubArticles=pubLd.flatMap(doc=>doc['@graph']??[]).filter(node=>node['@type']==='ScholarlyArticle');
+assert.deepEqual(pubArticles.map(article=>article.identifier.value).sort(),['10.1088/1361-6560/ad6eda','10.1088/1361-6560/ae6af7','10.1177/08953996261439069']);
+assert.equal(JSON.stringify(pubLd).includes('DiffuCoCT'),false);
+assert.equal(JSON.stringify(pubLd).includes('10.1117'),false);
+const projectPages=pages.filter(f=>/^dist\/projects\/[^/]+\/index\.html$/.test(f));
+assert.equal(projectPages.length,2);
+for(const f of projectPages){
+  const articles=jsonLd(readFileSync(f,'utf8')).flatMap(doc=>doc['@graph']??[]).filter(node=>node['@type']==='ScholarlyArticle');
+  assert.equal(articles.length,1,f);
+  assert.ok(['10.1088/1361-6560/ae6af7','10.1088/1361-6560/ad6eda'].includes(articles[0].identifier.value),f);
+}
+const postPages=pages.filter(f=>/^dist\/blog\/[^/]+\/index\.html$/.test(f));
+assert.ok(postPages.length>=3);
+for(const f of postPages){
+  const s=readFileSync(f,'utf8');
+  assert.equal(metaContent(s,'property','og:type'),'article',f);
+  const published=metaContent(s,'property','article:published_time');
+  assert.match(published,/^\d{4}-\d{2}-\d{2}$/,f);
+  assert.ok(s.includes(`${published} · `),f);
+  assert.equal(metaContent(s,'property','article:author'),'https://orcid.org/0009-0003-2386-133X',f);
+  assert.equal(jsonLd(s).length,0,f);
+}
+const blogIndex=readFileSync('dist/blog/index.html','utf8');
+assert.equal(metaContent(blogIndex,'property','og:type'),'website');
+assert.equal(metaContent(blogIndex,'property','article:published_time'),undefined);
 console.log(`Static acceptance passed: ${html.length} pages, 3 papers, ${projects.filter(p=>p.data.public).length} public project details, no demo/private data, local assets resolve.`);
