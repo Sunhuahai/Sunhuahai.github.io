@@ -1,4 +1,4 @@
 ---
 import Base from '../layouts/Base.astro';import {site} from '../config/site';
 ---
-<Base title={site.labels.statusTitle}><section class="page-top"><p class="eyebrow">Service status</p><h1>{site.labels.statusTitle}</h1></section><div class="empty"><h2>{site.labels.statusPending}</h2><p>{site.labels.statusBody}</p>{site.statusPublic&&<a class="button" href="https://status.huahaiatlas.com">{site.labels.statusTitle} ↗</a>}</div></Base>
+<Base title={site.labels.statusTitle} robots="noindex"><section class="page-top"><p class="eyebrow">Service status</p><h1>{site.labels.statusTitle}</h1></section><div class="empty"><p>{site.labels.statusBody}</p>{site.statusPublic&&<a class="button" href="https://status.huahaiatlas.com">{site.labels.statusTitle} ↗</a>}</div></Base>

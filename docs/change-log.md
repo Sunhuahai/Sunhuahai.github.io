@@ -1,6 +1,8 @@
 # 服务器变更记录
 
-2026-11-07：分支 `cursor/seo-share-metadata-7a38`（未合并、未发布，未推 main）。技术向分享与检索元数据：canonical 固定为 https://huahaiatlas.com 的目录尾斜杠并去掉查询串；博客文章 `og:type=article`，`article:published_time` 与文内日期同一天，`article:author` 为已公开 ORCID；首页与关于页 Person JSON-LD（姓名、英文名、主页、ORCID）；科研页与公开项目页 ScholarlyArticle JSON-LD（仅 `papers.bib` 三篇期刊文章的题名、作者、期刊卷期页、年份与 DOI）。会议口头报告不进入 ScholarlyArticle。404 增加 `noindex`。未改首页标题、各页 description、状态页文案与主导航，未换分享图，未改篆文「青」图标，未改论文/会议数据、工作流或 DNS。未部署。
+2026-11-07：Huahai 确认后，同一分支写入首页标题「孙华海 Huahai Sun · 华海图鉴」（页眉文字仍为 Huahai Atlas）。description：首页「孙华海（Huahai Sun）的学术主页，收录期刊文章、会议记录、研究项目与博客。」；关于「了解孙华海（Huahai Sun）的研究方向与学术背景。」；科研「孙华海的期刊文章与会议记录，包含口头报告、海报及会议论文。」；项目「孙华海的公开研究项目及相关学术成果。」；博客列表「孙华海的研究笔记与随笔。」。单篇博客 description 未改。主导航移除「状态」；/status/ 保留并 noindex，正文仅为「网站已公开上线，独立状态监测尚未接入。」。未新增分享图，未改篆文「青」、论文与会议数据、工作流或 DNS。
+
+2026-11-07：同分支较早提交只做技术向元数据（该提交本身未改文案）：canonical 固定为 https://huahaiatlas.com 的目录尾斜杠并去掉查询串；博客文章 `og:type=article`，`article:published_time` 与文内日期同一天，`article:author` 为已公开 ORCID；首页与关于页 Person JSON-LD（姓名、英文名、主页、ORCID）；科研页与公开项目页 ScholarlyArticle JSON-LD（仅 `papers.bib` 三篇期刊文章的题名、作者、期刊卷期页、年份与 DOI）。会议口头报告不进入 ScholarlyArticle。404 增加 `noindex`。
 
 2026-11-06：增加 HANDOFF.md 与 docs/handoff-drafts/（SPIE 等未入库调研草稿），供 omarchy 本机 Hermes Agent 交接；无站点内容改动。源码 github-pages → origin / GitHub Pages main。未改动腾讯云预览机 Caddy/SSH/防火墙。
 

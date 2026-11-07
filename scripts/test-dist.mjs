@@ -23,7 +23,7 @@ for(const f of html){const s=readFileSync(f,'utf8');assert.doesNotMatch(s,/Alber
 assert.equal(files.filter(f=>/\.pdf$/i.test(f)).length,0);const posts=walk('src/content/posts').filter(f=>/\.mdx?$/.test(f)).filter(f=>yaml.load(readFileSync(f,'utf8').split('---')[1]).draft===false);if(site.blogEnabled){assert.ok(existsSync('dist/blog/index.html'));if(posts.length===0)assert.ok(readFileSync('dist/blog/index.html','utf8').includes('文章正在酝酿中'));}else{assert.ok(!existsSync('dist/blog'));assert.ok(!readFileSync('dist/sitemap.xml','utf8').includes('/blog/'));for(const f of html)assert.ok(!readFileSync(f,'utf8').includes('href="/blog/'),`Hidden blog link: ${f}`);}assert.equal(files.filter(f=>/^dist\/blog\/.+\/index.html$/.test(f)).length,site.blogEnabled?posts.length:0);assert.ok(!files.some(f=>f.includes('qa-math')||f.includes('qa-draft')));
 const projects=walk('src/content/projects').filter(f=>f.endsWith('.md')).map(f=>({slug:f.split('/').pop().replace(/\.md$/,''),data:yaml.load(readFileSync(f,'utf8').split('---')[1])}));
 for(const p of projects)assert.equal(existsSync(`dist/projects/${p.slug}/index.html`),p.data.public===true,`Project visibility: ${p.slug}`);
-assert.ok(!readFileSync('dist/index.html','utf8').includes('华海图鉴'));
+assert.match(readFileSync('dist/index.html','utf8'),/<title>孙华海 Huahai Sun · 华海图鉴<\/title>/);
 const robots=readFileSync('dist/robots.txt','utf8');
 assert.match(robots,/Allow:\s*\//);
 assert.doesNotMatch(robots,/Disallow:\s*\/\s*$/m);
@@ -33,26 +33,45 @@ for(const r of ['posts/voice-input-revolution.html','posts/writing-as-daily-prac
 
 const pages=html.filter(f=>!f.includes('pagefind')&&!f.includes('/posts/'));
 const metaContent=(s,attr,name)=>s.match(new RegExp(`<meta ${attr}="${name}" content="([^"]*)"`))?.[1];
-const sharedDescription='孙华海的学术主页：X 射线计算成像、物理约束建模与机器学习。';
-for(const rel of ['index.html','about/index.html','publications/index.html','blog/index.html','projects/index.html','status/index.html']){
-  assert.equal(metaContent(readFileSync('dist/'+rel,'utf8'),'name','description'),sharedDescription,rel);
+const approvedDescriptions={
+  'index.html':'孙华海（Huahai Sun）的学术主页，收录期刊文章、会议记录、研究项目与博客。',
+  'about/index.html':'了解孙华海（Huahai Sun）的研究方向与学术背景。',
+  'publications/index.html':'孙华海的期刊文章与会议记录，包含口头报告、海报及会议论文。',
+  'projects/index.html':'孙华海的公开研究项目及相关学术成果。',
+  'blog/index.html':'孙华海的研究笔记与随笔。',
+};
+for(const [rel,description] of Object.entries(approvedDescriptions)){
+  const s=readFileSync('dist/'+rel,'utf8');
+  assert.equal(metaContent(s,'name','description'),description,rel);
+  assert.equal(metaContent(s,'property','og:description'),description,rel);
 }
-assert.match(home,/<title>Huahai Atlas<\/title>/);
-assert.match(home,/property="og:type" content="website"/);
+assert.equal(metaContent(readFileSync('dist/blog/voice-input-revolution/index.html','utf8'),'name','description'),'语音输入真正改变的不是速度，而是把口语整理成可用文本的能力。');
+assert.equal(metaContent(readFileSync('dist/projects/scatterfusionnet/index.html','utf8'),'name','description'),site.description);
+assert.match(home,/<title>孙华海 Huahai Sun · 华海图鉴<\/title>/);
+assert.match(home,/property="og:title" content="孙华海 Huahai Sun · 华海图鉴"/);
 assert.match(home,/property="og:site_name" content="Huahai Atlas"/);
+assert.match(home,/<span>Huahai Atlas<\/span>/);
+assert.doesNotMatch(home,/>状态</);
+assert.match(home,/property="og:type" content="website"/);
 assert.match(home,/property="og:image" content="https:\/\/huahaiatlas\.com\/assets\/avatar-illustrated\.webp"/);
 assert.match(home,/property="og:image:width" content="960"/);
 assert.match(home,/property="og:image:height" content="960"/);
 assert.match(home,/name="twitter:card" content="summary"/);
 assert.match(home,/rel="alternate" type="application\/rss\+xml"[^>]*href="https:\/\/huahaiatlas\.com\/rss\.xml"/);
 assert.match(home,/href="\/favicon\.svg"/);
-assert.match(readFileSync('dist/status/index.html','utf8'),/网站当前处于私有预览阶段/);
-assert.match(readFileSync('dist/status/index.html','utf8'),/href="\/status\/"/);
+const status=readFileSync('dist/status/index.html','utf8');
+assert.match(status,/网站已公开上线，独立状态监测尚未接入。/);
+assert.doesNotMatch(status,/私有预览|正式上线后开放/);
+assert.match(status,/name="robots" content="noindex"/);
+assert.doesNotMatch(status,/>状态</);
+assert.ok(existsSync('dist/status/index.html'));
 const notFound=readFileSync('dist/404.html','utf8');
 assert.match(notFound,/name="robots" content="noindex"/);
+assert.equal(metaContent(notFound,'name','description'),site.description);
 for(const f of pages){
-  if(f.endsWith('/404.html')||f.endsWith('dist/404.html'))continue;
+  if(f.endsWith('/404.html')||f.endsWith('dist/404.html')||f.endsWith('status/index.html'))continue;
   assert.doesNotMatch(readFileSync(f,'utf8'),/noindex/,f);
+  assert.doesNotMatch(readFileSync(f,'utf8'),/href="\/status\/"/,f);
 }
 for(const f of pages){
   const s=readFileSync(f,'utf8');
