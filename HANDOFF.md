@@ -87,9 +87,10 @@ node .yarn/releases/yarn-4.13.0.cjs test
 ## DNS（huahaiatlas.com）
 
 - 托管：**DNSPod**（`potato.dnspod.net` / `hot.dnspod.net`）
-- `@`：GitHub Pages A/AAAA 各 **2** 条（免费套餐主机名上限；官方建议 4 条，缺备用节点）
+- `@`：GitHub Pages A/AAAA 各 **2** 条（免费套餐负载均衡条数上限；官方建议 4 条，缺备用节点）
 - `www` → CNAME `sunhuahai.github.io`
-- **omarchy 上没有 DNSPod / 腾讯云 API 凭据**；改解析要 Huahai 登录控制台或另接凭据。
+- **omarchy 已有 DNSPod 凭据**：`~/.hermes/.env` 的 `TENCENTCLOUD_SECRET_ID` / `TENCENTCLOUD_SECRET_KEY`（权限 600）。走腾讯云 `dnspod` API（版本 `2021-03-23`，TC3-HMAC-SHA256 签名），可只读查询（`DescribeDomainList` / `DescribeRecordList`），也可增删改记录。
+- **任何 DNS 变更仍需 Huahai 授权**，动手前须讲清「改哪条、改成什么、影响什么」。密钥内容不得打印、不得写入本仓库或任何提交。
 
 ## GitHub 推送认证（omarchy / venti）
 

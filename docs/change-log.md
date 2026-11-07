@@ -1,5 +1,7 @@
 # 服务器变更记录
 
+2026-11-06：HANDOFF.md 更新 DNS 章节——omarchy 本机已配置 DNSPod 腾讯云凭据（`~/.hermes/.env`，权限 600，`TENCENTCLOUD_SECRET_ID` / `TENCENTCLOUD_SECRET_KEY`），经腾讯云 `dnspod` API（2021-03-23，TC3 签名）只读查询验证可用；同时明确任何 DNS 变更仍需 Huahai 授权、密钥不得打印或入库。无站点内容改动，未改动腾讯云预览机 Caddy/SSH/防火墙。
+
 2026-11-06：增加 HANDOFF.md 与 docs/handoff-drafts/（SPIE 等未入库调研草稿），供 omarchy 本机 Hermes Agent 交接；无站点内容改动。源码 github-pages → origin / GitHub Pages main。未改动腾讯云预览机 Caddy/SSH/防火墙。
 
 
