@@ -10,7 +10,7 @@
 | public-posts/README.md | 未作为文章导入；博客空态 |
 | avatar-original-clean.webp | 未导入；按用户要求用插画版 |
 | ORCID | 已导入，出版商作者页面核验 |
-| GitHub、邮箱、Google Scholar、导师 | 未导入；缺少确认 |
+| GitHub、Bilibili、批准的 iCloud 邮箱 | 已在 `contact-links` 预览分支导入；小红书仅号、无主页 URL；Google Scholar / 导师仍缺确认 |
 | 简历、私人电话、PDF、未发表研究 | 不在站点产物中 |
 | 通知渠道 | 未提供，未配置或发送 |
 

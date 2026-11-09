@@ -73,15 +73,19 @@ test('article day matches the UTC calendar date used on the page', () => {
   assert.equal(articlePublishedDay(new Date('2026-06-24T00:00:00.000Z')), '2026-06-24');
 });
 
-test('person JSON-LD keeps confirmed name and ORCID only', () => {
+test('person JSON-LD keeps confirmed name and public sameAs profiles', () => {
   const person = personJsonLd();
   assert.equal(person['@type'], 'Person');
   assert.equal(person.name, '孙华海');
   assert.equal(person.alternateName, 'Huahai Sun');
   assert.equal(person.url, 'https://huahaiatlas.com/');
-  assert.deepEqual(person.sameAs, ['https://orcid.org/0009-0003-2386-133X']);
+  assert.deepEqual(person.sameAs, [
+    'https://orcid.org/0009-0003-2386-133X',
+    'https://github.com/Sunhuahai',
+    'https://space.bilibili.com/473733680',
+  ]);
   const serialized = serializeJsonLd(person);
-  assert.doesNotMatch(serialized, /华海图鉴|mailto:|@type":"ScholarlyArticle|telephone|email/i);
+  assert.doesNotMatch(serialized, /华海图鉴|mailto:|@type":"ScholarlyArticle|telephone|email|icloud|sunhh19|xiaohongshu|9601941483/i);
   assert.equal(JSON.parse(serialized).name, '孙华海');
 });
 

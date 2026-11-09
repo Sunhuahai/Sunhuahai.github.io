@@ -55,6 +55,15 @@ export function personId(): string {
   return `${new URL(site.url).origin}/#person`;
 }
 
+export function personSameAs(): string[] {
+  const links = site.links
+    .filter((link) => 'href' in link && typeof link.href === 'string' && /^https?:\/\//i.test(link.href))
+    .map((link) => (link as { href: string }).href);
+  // Keep ORCID first; never include email or unverified Xiaohongshu.
+  const unique = [...new Set([site.orcid, ...links.filter((href) => href !== site.orcid)])];
+  return unique;
+}
+
 export function personNode() {
   return {
     '@type': 'Person',
@@ -62,7 +71,7 @@ export function personNode() {
     name: site.name,
     alternateName: site.englishName,
     url: canonicalUrl('/'),
-    sameAs: [site.orcid],
+    sameAs: personSameAs(),
   };
 }
 
