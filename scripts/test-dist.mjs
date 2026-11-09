@@ -17,6 +17,20 @@ assert.match(pub,/hqlab\.sjtu\.edu\.cn\/fully3d-2025\/program/);
 const home=readFileSync('dist/index.html','utf8');
 assert.match(home,/>科研</);
 assert.doesNotMatch(home,/>论文</);
+for (const f of html) {
+  const s = readFileSync(f, 'utf8');
+  assert.doesNotMatch(s, /sunhh19@icloud\.com/, `plain iCloud must not appear: ${f}`);
+  assert.doesNotMatch(s, /@mails?\.tsinghua\.edu\.cn|@tsinghua\.edu\.cn/i, `Tsinghua email forbidden: ${f}`);
+  assert.doesNotMatch(s, /tel:|\+86[\d\-\s]{8,}/i, `phone forbidden: ${f}`);
+}
+assert.match(home, /social-links/);
+assert.match(home, /data-u="sunhh19"/);
+assert.match(home, /data-d="icloud\.com"/);
+assert.match(home, /https:\/\/github\.com\/Sunhuahai/);
+assert.match(home, /https:\/\/space\.bilibili\.com\/473733680/);
+assert.match(home, /data-xhs="9601941483"/);
+assert.match(home, /href="\/rss\.xml"/);
+assert.doesNotMatch(home, /x\.com\/|twitter\.com\//i);
 
 for(const doi of ['10.1088/1361-6560/ae6af7','10.1177/08953996261439069','10.1088/1361-6560/ad6eda'])assert.ok(pub.includes(`https://doi.org/${doi}`));
 for(const f of html){const s=readFileSync(f,'utf8');assert.doesNotMatch(s,/Albert Einstein|Torvalds|einstein1905|example_pdf|PCFE|NSS\/MIC|mailto:|10\.2\.0\.|127\.0\.0\.1/i,f);for(const m of s.matchAll(/(?:href|src)="(\/[^"?#]*)/g)){const url=m[1];if(url==='/'||url.startsWith('//'))continue;const target=resolve('dist','.'+url);assert.ok(existsSync(target)||existsSync(join(target,'index.html')),`${f}: missing ${url}`)}}
@@ -87,7 +101,7 @@ const homeLd=jsonLd(home);
 assert.equal(homeLd.length,1);
 assert.equal(homeLd[0]['@type'],'Person');
 assert.equal(homeLd[0].name,'孙华海');
-assert.deepEqual(homeLd[0].sameAs,['https://orcid.org/0009-0003-2386-133X']);
+assert.deepEqual(homeLd[0].sameAs,['https://orcid.org/0009-0003-2386-133X','https://github.com/Sunhuahai','https://space.bilibili.com/473733680']);
 assert.equal(JSON.stringify(homeLd).includes('ScholarlyArticle'),false);
 const pubLd=jsonLd(pub);
 const pubArticles=pubLd.flatMap(doc=>doc['@graph']??[]).filter(node=>node['@type']==='ScholarlyArticle');

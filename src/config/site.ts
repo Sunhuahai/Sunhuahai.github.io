@@ -16,8 +16,22 @@ export const site = {
  role: '清华大学 · 工程物理系 · 博士研究生',
  bio: "我是孙华海，目前在清华大学攻读核科学与技术博士学位。我关注如何结合成像物理、统计建模和机器学习，实现更可靠、更高效的 X 射线 CT 定量成像；也对大模型推理与高效计算系统感兴趣。",
  englishBio: "I am a Ph.D. student in Nuclear Science and Technology at Tsinghua University. My research interests lie at the intersection of X-ray computational imaging, physics-informed modeling, inverse problems, and machine learning. I am also interested in efficient inference for large language models.",
- /** Only explicitly public author identifier; no email, CV, or GitHub. */
+ /** Verified ORCID iD. */
  orcid: 'https://orcid.org/0009-0003-2386-133X',
+ /**
+  * Public contact / social links shown as icon row.
+  * Email: only the Huahai-approved iCloud address may appear, always obfuscated
+  * in HTML (never the Tsinghua mailbox, never a phone number).
+  * Xiaohongshu has no verified public profile URL yet — show 小红书号 only.
+  */
+ links: [
+  { kind: 'email', label: '邮箱', user: 'sunhh19', domain: 'icloud.com' },
+  { kind: 'orcid', label: 'ORCID', href: 'https://orcid.org/0009-0003-2386-133X' },
+  { kind: 'github', label: 'GitHub', href: 'https://github.com/Sunhuahai' },
+  { kind: 'bilibili', label: '哔哩哔哩', href: 'https://space.bilibili.com/473733680' },
+  { kind: 'xiaohongshu', label: '小红书', redId: '9601941483' },
+  { kind: 'rss', label: 'RSS', href: '/rss.xml' },
+ ] as const,
  /** Public status domain stays inactive until DNS/ICP/routing acceptance. */
  statusPublic: false,
  /** Generate blog routes and show blog navigation/home content when enabled. */

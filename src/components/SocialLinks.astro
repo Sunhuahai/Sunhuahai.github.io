@@ -1,0 +1,181 @@
+---
+import { site } from '../config/site';
+import IconOrcid from '~icons/academicons/orcid';
+import IconGithub from '~icons/fa-brands/github';
+import IconEnvelope from '~icons/fa-solid/envelope';
+import IconRss from '~icons/fa-solid/rss';
+import BilibiliIcon from './icons/BilibiliIcon.astro';
+import XiaohongshuIcon from './icons/XiaohongshuIcon.astro';
+
+interface Props {
+  /** Smaller icons for the footer. */
+  compact?: boolean;
+  class?: string;
+}
+
+const { compact = false, class: className } = Astro.props;
+
+const email = site.links.find((l) => l.kind === 'email');
+const orcid = site.links.find((l) => l.kind === 'orcid');
+const github = site.links.find((l) => l.kind === 'github');
+const bilibili = site.links.find((l) => l.kind === 'bilibili');
+const xhs = site.links.find((l) => l.kind === 'xiaohongshu');
+const rss = site.links.find((l) => l.kind === 'rss');
+const xhsTip = `小红书号 ${xhs && 'redId' in xhs ? xhs.redId : ''}（点击复制）`;
+---
+
+<ul class:list={['social-links', compact && 'social-links--compact', className]} aria-label="联系方式与社交账号">
+  {
+    email && (
+      <li>
+        <a
+          class="social-link social-link--email"
+          href="#contact-email"
+          data-u={email.user}
+          data-d={email.domain}
+          aria-label={email.label}
+          title={email.label}
+        >
+          <IconEnvelope />
+          <noscript>
+            <span class="social-fallback">{email.user} [at] {email.domain}</span>
+          </noscript>
+        </a>
+      </li>
+    )
+  }
+  {
+    orcid && 'href' in orcid && (
+      <li>
+        <a class="social-link" href={orcid.href} target="_blank" rel="noopener noreferrer" aria-label={orcid.label} title={orcid.label}>
+          <IconOrcid />
+        </a>
+      </li>
+    )
+  }
+  {
+    github && 'href' in github && (
+      <li>
+        <a class="social-link" href={github.href} target="_blank" rel="noopener noreferrer" aria-label={github.label} title={github.label}>
+          <IconGithub />
+        </a>
+      </li>
+    )
+  }
+  {
+    bilibili && 'href' in bilibili && (
+      <li>
+        <a class="social-link" href={bilibili.href} target="_blank" rel="noopener noreferrer" aria-label={bilibili.label} title={bilibili.label}>
+          <BilibiliIcon />
+        </a>
+      </li>
+    )
+  }
+  {
+    xhs && 'redId' in xhs && (
+      <li>
+        <button type="button" class="social-link social-link--xhs" data-xhs={xhs.redId} aria-label={xhsTip} title={xhsTip}>
+          <XiaohongshuIcon />
+        </button>
+      </li>
+    )
+  }
+  {
+    rss && 'href' in rss && (
+      <li>
+        <a class="social-link" href={rss.href} aria-label={rss.label} title={rss.label}>
+          <IconRss />
+        </a>
+      </li>
+    )
+  }
+</ul>
+
+<style>
+  .social-links {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .social-links--compact {
+    margin: 10px 0 0;
+    gap: 8px;
+  }
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink);
+    background: var(--bg);
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .social-links--compact .social-link {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+  .social-link:hover,
+  .social-link:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .social-link :global(svg) {
+    width: 1em;
+    height: 1em;
+    display: block;
+  }
+  .social-fallback {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+</style>
+
+<script is:inline>
+(() => {
+  const openMail = (el) => {
+    const u = el.getAttribute('data-u');
+    const d = el.getAttribute('data-d');
+    if (!u || !d) return;
+    window.location.href = 'mai' + 'lto:' + u + String.fromCharCode(64) + d;
+  };
+  document.querySelectorAll('.social-link--email').forEach((el) => {
+    el.addEventListener('click', (event) => {
+      event.preventDefault();
+      openMail(el);
+    });
+  });
+  document.querySelectorAll('.social-link--xhs').forEach((el) => {
+    el.addEventListener('click', async () => {
+      const id = el.getAttribute('data-xhs') || '';
+      const base = '小红书号 ' + id + '（点击复制）';
+      try {
+        await navigator.clipboard.writeText(id);
+        el.setAttribute('title', '已复制小红书号');
+        el.setAttribute('aria-label', '已复制小红书号');
+        setTimeout(() => {
+          el.setAttribute('title', base);
+          el.setAttribute('aria-label', base);
+        }, 1600);
+      } catch {
+        window.prompt('小红书号', id);
+      }
+    });
+  });
+})();
+</script>

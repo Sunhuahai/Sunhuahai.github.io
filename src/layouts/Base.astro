@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site } from '../config/site';
+import SocialLinks from '../components/SocialLinks.astro';
 import { canonicalUrl, serializeJsonLd, shareImage } from '../utils/seo';
 
 interface Props {
@@ -100,7 +101,7 @@ if (ogType === 'article') {
       } catch {}
     </script>
   </head>
-<body><a class="skip" href="#main">{site.labels.skip}</a><header class="header"><div class="header-inner"><a class="wordmark" href="/"><img src="/favicon.svg" width="30" height="30" alt=""/><span>{site.title}</span></a><button class="menu-toggle" aria-label={site.labels.menu} aria-expanded="false" aria-controls="navigation">☰</button><nav id="navigation" aria-label={site.labels.menu}>{site.nav.filter(n=>site.blogEnabled || n.href!=='/blog/').map(n=><a href={n.href} aria-current={(n.href==='/'?Astro.url.pathname==='/':Astro.url.pathname.startsWith(n.href))?'page':undefined}>{n.label}</a>)}</nav><button class="theme-toggle" aria-label={site.labels.theme} title={site.labels.theme}>◐</button></div></header><main id="main"><slot/></main><footer><div><a href="/">{site.title}</a><p>{site.labels.footer}</p></div><p>© {new Date().getFullYear()} {site.englishName}<br/><a href="https://github.com/dadangnh/as-folio" rel="noreferrer">as-folio</a> · Astro</p></footer>
+<body><a class="skip" href="#main">{site.labels.skip}</a><header class="header"><div class="header-inner"><a class="wordmark" href="/"><img src="/favicon.svg" width="30" height="30" alt=""/><span>{site.title}</span></a><button class="menu-toggle" aria-label={site.labels.menu} aria-expanded="false" aria-controls="navigation">☰</button><nav id="navigation" aria-label={site.labels.menu}>{site.nav.filter(n=>site.blogEnabled || n.href!=='/blog/').map(n=><a href={n.href} aria-current={(n.href==='/'?Astro.url.pathname==='/':Astro.url.pathname.startsWith(n.href))?'page':undefined}>{n.label}</a>)}</nav><button class="theme-toggle" aria-label={site.labels.theme} title={site.labels.theme}>◐</button></div></header><main id="main"><slot/></main><footer><div><a href="/">{site.title}</a><p>{site.labels.footer}</p><SocialLinks compact /></div><p>© {new Date().getFullYear()} {site.englishName}<br/><a href="https://github.com/dadangnh/as-folio" rel="noreferrer">as-folio</a> · Astro</p></footer>
 <script>
 const toggle=document.querySelector<HTMLButtonElement>('.theme-toggle');
 toggle?.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=next;try{localStorage.setItem('atlas-theme',next)}catch{}});

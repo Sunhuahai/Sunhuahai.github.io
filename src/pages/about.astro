@@ -1,4 +1,36 @@
 ---
-import Base from '../layouts/Base.astro';import {site} from '../config/site';import {personJsonLd} from '../utils/seo';import {Content as Chinese} from '../content/about-zh.md';import {Content as English} from '../content/about-en.md';
+import Base from '../layouts/Base.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import {site} from '../config/site';
+import {personJsonLd} from '../utils/seo';
+import {Content as Chinese} from '../content/about-zh.md';
+import {Content as English} from '../content/about-en.md';
 ---
-<Base title="关于" description={site.pages.about} jsonLd={personJsonLd()}><section class="page-top"><p class="eyebrow">About</p><h1>{site.name}<span class="subtitle">{site.englishName}</span></h1><p>{site.role}</p></section><div class="about-grid"><article class="prose"><Chinese/><h2>教育经历</h2><ol class="timeline"><li><span>2023 — 至今</span><strong>清华大学</strong><p>核科学与技术 · 博士研究生</p></li><li><span>2019 — 2023</span><strong>清华大学</strong><p>工程物理 · 本科</p></li></ol><h2 lang="en">Biography</h2><div lang="en"><p>{site.englishBio}</p><English/></div><p><a href={site.orcid} target="_blank" rel="noopener noreferrer">ORCID · 0009-0003-2386-133X ↗</a></p></article><aside><img class="about-portrait" src="/assets/avatar-illustrated.webp" width="400" height="400" alt="孙华海的个人肖像"/><p class="eyebrow">Research interests</p><ul class="interests">{site.interests.map(s=><li>{s}</li>)}</ul></aside></div></Base>
+<Base title="关于" description={site.pages.about} jsonLd={personJsonLd()}>
+  <section class="page-top">
+    <p class="eyebrow">About</p>
+    <h1>{site.name}<span class="subtitle">{site.englishName}</span></h1>
+    <p>{site.role}</p>
+  </section>
+  <div class="about-grid">
+    <article class="prose">
+      <Chinese/>
+      <h2>教育经历</h2>
+      <ol class="timeline">
+        <li><span>2023 — 至今</span><strong>清华大学</strong><p>核科学与技术 · 博士研究生</p></li>
+        <li><span>2019 — 2023</span><strong>清华大学</strong><p>工程物理 · 本科</p></li>
+      </ol>
+      <h2 lang="en">Biography</h2>
+      <div lang="en">
+        <p>{site.englishBio}</p>
+        <English/>
+      </div>
+    </article>
+    <aside>
+      <img class="about-portrait" src="/assets/avatar-illustrated.webp" width="400" height="400" alt="孙华海的个人肖像"/>
+      <SocialLinks />
+      <p class="eyebrow">Research interests</p>
+      <ul class="interests">{site.interests.map(s=><li>{s}</li>)}</ul>
+    </aside>
+  </div>
+</Base>
