@@ -3,7 +3,7 @@ title: "第一长期主义"
 date: 2026-08-18
 description: "当努力需要很久才能得到验证，如何区分长期主义与固执，判断什么值得持续投入。"
 tags: ["科研", "思考"]
-draft: true
+draft: false
 math: false
 toc: true
 ---

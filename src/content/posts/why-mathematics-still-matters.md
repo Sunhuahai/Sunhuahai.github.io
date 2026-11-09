@@ -3,7 +3,7 @@ title: "还得是数学"
 date: 2026-08-08
 description: "AI 可以帮助我们求解，数学仍然帮助我们描述问题、理解结构，并判断答案是否可信。"
 tags: ["数学", "学习", "AI"]
-draft: true
+draft: false
 math: false
 toc: true
 ---
