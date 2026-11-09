@@ -1,6 +1,6 @@
 # 服务器变更记录
 
-2026-11-09：**预览 / 未发布**（分支 `contact-links`）。关于页头像下、首页简介下与页脚增加联系方式图标栏：邮箱（仅批准的 iCloud，HTML 混淆）、ORCID、GitHub、Bilibili、小红书号（无已核验主页 URL，点击复制）、博客 RSS。Person JSON-LD `sameAs` 增加 GitHub 与 Bilibili；邮箱不进 JSON-LD。未改论文白名单、会议数据、导航、工作流或 DNS。
+2026-11-09：**已发布**（PR #3，main `2ff1965`，2026-11-09 21:00 GitHub Actions 部署成功）。关于页头像下、首页简介下与页脚增加联系方式图标栏：邮箱（仅批准的 iCloud，HTML 混淆）、ORCID、GitHub、Bilibili、小红书号（无已核验主页 URL，点击复制）、博客 RSS。Person JSON-LD `sameAs` 增加 GitHub 与 Bilibili；邮箱不进 JSON-LD。未改论文白名单、会议数据、导航、工作流或 DNS。
 
 2026-11-09：Huahai 确认发布博客。新增 `ct-scatter-correction-primer` 与 `xfct-primer`（日期 2026-11-09，draft false）。散射校正文保留原稿第一人称：「沿着同一方向，我们在 Fully3D 2025 上做了题为 DiffuCoCT 的口头报告，尝试用扩散模型做双探测器 CT 的散射校正。」未把口头报告改写成未具名表述。另将已有三篇「第一长期主义」「还得是数学」「选择、摩擦与反馈」由 draft true 改为 false，正文未改。未加入光子计数泊松噪声稿，未改论文白名单、会议数据、导航、工作流或 DNS。
 
