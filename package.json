@@ -39,7 +39,7 @@
     "dev": "astro dev --host 127.0.0.1",
     "build": "node --experimental-strip-types scripts/validate-publications.ts && node scripts/clean-content-cache.mjs && astro build && pagefind --site dist",
     "check": "astro check",
-    "test": "node --experimental-strip-types --test scripts/publication-policy.test.ts && node scripts/test-dist.mjs",
+    "test": "node --experimental-strip-types --test scripts/publication-policy.test.ts scripts/seo.test.ts && node scripts/test-dist.mjs",
     "preview": "astro preview --host 127.0.0.1"
   },
   "dependencies": {
