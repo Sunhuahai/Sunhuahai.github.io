@@ -46,7 +46,7 @@ export const site = {
   papers:'已发表论文', allPapers:'全部科研', allArticles:'全部文章',
   projects:'公开研究项目', blog:'研究与随笔', allProjects:'浏览项目',
   bib:'BibTeX', copy:'复制引用', copied:'已复制', copyFailed:'请手动复制下方引用',
-  doi:'DOI ↗', evidence:'出版记录 ↗', year:'年份', all:'全部',
+  doi:'DOI ↗', evidence:'出版记录 ↗', journalArticleZh:'期刊文章 · 中文', year:'年份', all:'全部',
   emptyBlog:'文章正在酝酿中', emptyBlogBody:'这里将记录研究、数学与计算的思考。暂时没有公开文章。',
   back:'返回列表', tags:'标签', contents:'目录',
   statusTitle:'服务状态', statusBody:'网站已公开上线，独立状态监测尚未接入。',

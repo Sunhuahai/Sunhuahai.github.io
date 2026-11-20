@@ -2,10 +2,13 @@
  * Build-time SEO helpers.
  *
  * Canonical URLs always use the configured site origin. JSON-LD is limited to
- * the public person profile and whitelist journal articles. Conference talks,
- * posters, and proceedings are not scholarly articles and must not be passed in.
+ * the public person profile and whitelist journal articles that publish a DOI.
+ * The explicitly allowlisted non-DOI Chinese article is omitted. Conference
+ * talks, posters, and proceedings are not scholarly articles and must not be
+ * passed in.
  */
 import { site } from '../config/site.ts';
+import { NON_DOI_DISPLAYED_JOURNAL_KEYS } from './journal-allowlist.ts';
 
 /** Existing illustrated portrait. Square, so share cards stay `summary`. */
 export const shareImage = {
@@ -27,6 +30,7 @@ export interface ScholarlySource {
   issue: string;
   pages: string;
   doi: string;
+  key?: string;
 }
 
 export function canonicalUrl(input: string, origin = site.url): string {
@@ -87,8 +91,15 @@ function required(value: string, field: string, doi: string): string {
   return value;
 }
 
+function isAuthorizedNonDoiArticle(paper: ScholarlySource): boolean {
+  return Boolean(paper.key && NON_DOI_DISPLAYED_JOURNAL_KEYS.has(paper.key));
+}
+
 /** Journal-article structured data. Callers must not pass conference records. */
 export function scholarlyArticleNode(paper: ScholarlySource) {
+  if (isAuthorizedNonDoiArticle(paper)) {
+    throw new Error(`Refusing JSON-LD for non-DOI article ${paper.key}`);
+  }
   if (!DOI_RE.test(paper.doi)) throw new Error(`Refusing JSON-LD for unconfirmed DOI: ${paper.doi}`);
   const doi = paper.doi;
   const title = required(paper.title, 'title', doi);
@@ -136,9 +147,16 @@ export function scholarlyArticleNode(paper: ScholarlySource) {
 }
 
 export function scholarlyArticleGraph(papers: readonly ScholarlySource[]) {
+  const articles = papers.flatMap((paper) => {
+    if (isAuthorizedNonDoiArticle(paper)) {
+      if (paper.doi.trim()) throw new Error(`Refusing JSON-LD for non-DOI article ${paper.key}`);
+      return [];
+    }
+    return [scholarlyArticleNode(paper)];
+  });
   return {
     '@context': 'https://schema.org',
-    '@graph': [personNode(), ...papers.map(scholarlyArticleNode)],
+    '@graph': [personNode(), ...articles],
   };
 }
 

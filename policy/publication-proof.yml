@@ -27,3 +27,11 @@ records:
     verified_on: "2026-10-24"
     public_pdf_allowed: false
     note: "PubMed confirms 2024 PMB volume 69 issue 18, DOI; 185004 is publisher article number."
+  - bibkey: Li2025CssMar
+    kind: journal_article
+    publication_status: published
+    evidence_url: "https://www.chndoi.org/Resolution/Handler?doi=10.13505/j.1007-1482.2025.30.04.006"
+    publisher_url: "https://www.chndoi.org/Resolution/Handler?doi=10.13505/j.1007-1482.2025.30.04.006"
+    verified_on: "2026-11-20"
+    public_pdf_allowed: false
+    note: "Authorized non-DOI display. China DOI registration (read 2026-11-20) gives the compact title 2026中国体视学学会CBCT金属伪影消除挑战赛(CSS-MAR 2026) and authors 李亮;孙华海;汪令行;朱磊. Journal, year, volume, issue, and pages were blank there. Publisher fulltext and the society WeChat issue page were not readable. Displayed title is the user-authorized spaced form; 体视学学会 matches this record. The registration URL is evidence only and must not be published as a DOI link or metadata."

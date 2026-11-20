@@ -124,7 +124,7 @@ git push github github-pages:main
 ## 待办（给 Hermes / Huahai）
 
 - [ ] SPIE 2024 proceedings `10.1117/12.3027548` 已调研，**未入库**（见 `docs/handoff-drafts/`）
-- [ ] CSS-MAR 中文期刊文章已看到线索，**未入库**
+- [ ] CSS-MAR 中文期刊、IEEE NSS/MIC/RTSD 2026 海报、关于页两项 2026 荣誉：已写入待发布分支（见 docs/change-log.md 2026-11-20），合并前未上线
 - [ ] 腾讯预览站是否下线：**未定**
 - [ ] DNSPod 是否升级套餐以补齐 4×A/AAAA：**未定**
 

@@ -3,6 +3,16 @@
 records:
   - authors:
       - Huahai Sun
+      - Liang Li
+    title: "Physics-Informed Jointly Constrained Spectral Signal Decomposition for High-Resolution X-Ray Fluorescence Computed Tomography"
+    event: "2026 IEEE Nuclear Science Symposium, Medical Imaging Conference and International Symposium on Room Temperature Semiconductor Detectors (IEEE NSS/MIC/RTSD 2026)"
+    location: Granada, Spain
+    date: "2026-11-07/2026-11-14"
+    type: poster
+    url: "https://nssmic.ieee.org/2026/"
+    note: "Poster Presentation · MIC-05-442 · Abstract #1630"
+  - authors:
+      - Huahai Sun
       - Wenyu Zhang
       - Liang Li
     title: "DiffuCoCT: Dual-Domain Collaborative Diffusion Network for Dual-Detector CT Scatter Correction"

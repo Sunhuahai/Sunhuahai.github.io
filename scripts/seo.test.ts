@@ -29,7 +29,8 @@ function papersFromBib(src: string): ScholarlySource[] {
     volume: entry.fields.volume,
     issue: entry.fields.number,
     pages: entry.fields.pages.replace(/--/g, '–'),
-    doi: entry.fields.doi,
+    doi: entry.fields.doi ?? '',
+    key: entry.key,
   }));
 }
 
@@ -92,8 +93,12 @@ test('person JSON-LD keeps confirmed name and public sameAs profiles', () => {
 test('whitelist journal articles become ScholarlyArticle nodes and talks do not', () => {
   const papers = papersFromBib(readFileSync('src/data/papers.bib', 'utf8'));
   assert.deepEqual(
-    papers.map((paper) => paper.doi).sort(),
+    papers.filter((paper) => paper.doi).map((paper) => paper.doi).sort(),
     [...EXPECTED_DOIS].sort(),
+  );
+  assert.deepEqual(
+    papers.filter((paper) => !paper.doi).map((paper) => paper.key),
+    ['Li2025CssMar'],
   );
   const graph = scholarlyArticleGraph(papers);
   assert.equal(graph['@graph'].filter((node) => node['@type'] === 'ScholarlyArticle').length, 3);
@@ -126,6 +131,7 @@ test('whitelist journal articles become ScholarlyArticle nodes and talks do not'
   assert.match(conferences, /DiffuCoCT/);
   assert.doesNotMatch(serialized, /DiffuCoCT|Fully3D|口头报告|海报|10\.1117|mailto:|telephone/);
   assert.doesNotMatch(serialized, /华海图鉴/);
+  assert.doesNotMatch(serialized, /CSS-MAR|10\.13505|chndoi\.org|Physics-Informed Jointly|NSS\/MIC/);
 });
 
 test('JSON-LD cannot close the script element', () => {
@@ -148,6 +154,27 @@ test('incomplete or non-author papers are refused', () => {
   assert.throws(() => scholarlyArticleNode({ ...sample, doi: 'not-a-doi' }));
   assert.throws(() => scholarlyArticleNode({ ...sample, authors: ['Liang Li'] }));
   assert.throws(() => scholarlyArticleNode({ ...sample, title: '' }));
+  assert.throws(() =>
+    scholarlyArticleNode({ ...sample, key: 'Li2025CssMar', doi: '10.13505/j.1007-1482.2025.30.04.006' }),
+  );
+  const skipped = scholarlyArticleGraph([
+    {
+      ...sample,
+      key: 'Li2025CssMar',
+      doi: '',
+      title: '2026 中国体视学学会 CBCT 金属伪影消除挑战赛（CSS-MAR 2026）',
+      authors: ['李亮', '孙华海', '汪令行', '朱磊'],
+      journal: '中国体视学与图像分析',
+    },
+  ]);
+  assert.equal(skipped['@graph'].some((node) => node['@type'] === 'ScholarlyArticle'), false);
+  assert.doesNotMatch(serializeJsonLd(skipped), /CSS-MAR|10\.13505|doi\.org/);
+  assert.throws(() =>
+    scholarlyArticleGraph([
+      { ...sample, key: 'Li2025CssMar', doi: '10.13505/j.1007-1482.2025.30.04.006' },
+    ]),
+  );
+  assert.throws(() => scholarlyArticleGraph([{ ...sample, key: 'Unlisted2025', doi: '' }]));
 });
 
 test('share image dimensions match the file and the seal icon is unchanged', () => {
