@@ -124,7 +124,7 @@ git push github github-pages:main
 ## 待办（给 Hermes / Huahai）
 
 - [ ] SPIE 2024 proceedings `10.1117/12.3027548` 已调研，**未入库**（见 `docs/handoff-drafts/`）
-- [ ] CSS-MAR 中文期刊、IEEE NSS/MIC/RTSD 2026 海报、关于页两项 2026 荣誉：2026-11-21（Asia/Shanghai）已批准合并发布（PR #4，见 docs/change-log.md）。部署结果尚未核验。omarchy 恢复后由本机同步，不在此环境操作。
+- [x] CSS-MAR 中文期刊、IEEE NSS/MIC/RTSD 2026 海报、关于页两项 2026 荣誉：2026-11-21（Asia/Shanghai）已合并并上线（PR #4，main `f8e32b8`，见 docs/change-log.md）。omarchy 恢复后由本机同步，不在此环境操作。
 - [ ] 腾讯预览站是否下线：**未定**
 - [ ] DNSPod 是否升级套餐以补齐 4×A/AAAA：**未定**
 
