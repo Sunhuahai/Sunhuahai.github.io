@@ -1,6 +1,6 @@
 # 服务器变更记录
 
-2026-11-20：**待发布**（本分支尚未合并，未部署。协调人在合并并确认上线后把本条改为已发布）。Huahai 授权以下三项。研究项目、在审稿、联系方式、篆文「青」、已有三篇英文期刊文章、Fully3D 2025 口头报告、已有博客、依赖、工作流与 DNS 均未改。
+2026-11-21：**已批准合并发布**（Asia/Shanghai。Huahai 确认「按这版合并发布，恢复后同步到 omarchy」。内容仍为下列三项。本条只记录批准与合并，不记录部署成功；线上核验另记）。研究项目、在审稿、联系方式、篆文「青」、已有三篇英文期刊文章、Fully3D 2025 口头报告、已有博客、依赖、工作流与 DNS 均未改。
 
 1. 科研 → 会议，新增海报，不作为期刊或会议论文。题名 Physics-Informed Jointly Constrained Spectral Signal Decomposition for High-Resolution X-Ray Fluorescence Computed Tomography。作者 Huahai Sun, Liang Li。会议名使用授权全文：2026 IEEE Nuclear Science Symposium, Medical Imaging Conference and International Symposium on Room Temperature Semiconductor Detectors (IEEE NSS/MIC/RTSD 2026)。地点 Granada, Spain。日期存为 `2026-11-07/2026-11-14`（原有 `YYYY` / `YYYY-MM` 不变，Fully3D 仍显示 2025-05）；窄栏显示 2026-11，正文行显示 November 7–14, 2026。类型海报。备注为授权识别串 Poster Presentation · MIC-05-442 · Abstract #1630。链接 https://nssmic.ieee.org/2026/ 。无 DOI，页面不放 Xplore 说明。2026-11-20 复核官方摘要册（只读，未入库）：欢迎页写 Granada，November 7–14, 2026；目录将 MIC-05 标为 MIC Poster Session 1；摘要页题名为上述英文题名，作者 Huahai Sun, Liang Li，编号 MIC-05-442 / #1630。周程表该条只印 Liang Li，作者以摘要页为准。册内 RTSD 全称写作 Room Temperature Semiconductor Detectors Symposium；页面采用授权的会议全称。摘要册 PDF 与日程页 https://ieee2026.eventclass.it/online-program 不放进页面链接。
 
