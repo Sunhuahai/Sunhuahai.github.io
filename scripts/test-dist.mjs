@@ -67,6 +67,27 @@ for(const line of honors){
   assert.equal(aboutHtml.split(line).length-1,1,line);
   assert.equal(pub.includes(line),false,line);
 }
+const scholarships=[
+  ['2026–2027','一等奖学金'],
+  ['2025–2026','二等奖学金'],
+  ['2024–2025','二等奖学金'],
+  ['2023–2024','三等奖学金'],
+  ['2022','学业优秀奖'],
+  ['2020','学业优秀奖'],
+];
+for(const [year,name] of scholarships){
+  const re=new RegExp(`<span>${year}</span>\\s*<p>${name}</p>`);
+  assert.equal((aboutHtml.match(re)||[]).length,1,`${year} ${name}`);
+}
+assert.equal(aboutHtml.split('一等奖学金').length-1,1);
+assert.equal(aboutHtml.split('二等奖学金').length-1,2);
+assert.equal(aboutHtml.split('三等奖学金').length-1,1);
+assert.equal(aboutHtml.split('学业优秀奖').length-1,2);
+for(const f of html){
+  if(f.endsWith('about/index.html')||f.includes('pagefind'))continue;
+  const s=readFileSync(f,'utf8');
+  assert.equal(/一等奖学金|二等奖学金|三等奖学金|学业优秀奖/.test(s),false,f);
+}
 for(const f of html){const s=readFileSync(f,'utf8');assert.doesNotMatch(s,/Albert Einstein|Torvalds|einstein1905|example_pdf|PCFE|mailto:|10\.2\.0\.|127\.0\.0\.1|10\.13505|chndoi\.org/i,f);if(f.endsWith('publications/index.html')){assert.match(s,/NSS\/MIC/);}else if(!f.includes('pagefind')){assert.doesNotMatch(s,/NSS\/MIC|CSS-MAR|Physics-Informed Jointly Constrained/,f);if(!f.endsWith('about/index.html')){for(const line of honors)assert.equal(s.includes(line),false,`${f}: ${line}`);}}for(const m of s.matchAll(/(?:href|src)="(\/[^"?#]*)/g)){const url=m[1];if(url==='/'||url.startsWith('//'))continue;const target=resolve('dist','.'+url);assert.ok(existsSync(target)||existsSync(join(target,'index.html')),`${f}: missing ${url}`)}}
 assert.equal(files.filter(f=>/\.pdf$/i.test(f)).length,0);const posts=walk('src/content/posts').filter(f=>/\.mdx?$/.test(f)).filter(f=>yaml.load(readFileSync(f,'utf8').split('---')[1]).draft===false);if(site.blogEnabled){assert.ok(existsSync('dist/blog/index.html'));if(posts.length===0)assert.ok(readFileSync('dist/blog/index.html','utf8').includes('文章正在酝酿中'));}else{assert.ok(!existsSync('dist/blog'));assert.ok(!readFileSync('dist/sitemap.xml','utf8').includes('/blog/'));for(const f of html)assert.ok(!readFileSync(f,'utf8').includes('href="/blog/'),`Hidden blog link: ${f}`);}assert.equal(files.filter(f=>/^dist\/blog\/.+\/index.html$/.test(f)).length,site.blogEnabled?posts.length:0);assert.ok(!files.some(f=>f.includes('qa-math')||f.includes('qa-draft')));
 const projects=walk('src/content/projects').filter(f=>f.endsWith('.md')).map(f=>({slug:f.split('/').pop().replace(/\.md$/,''),data:yaml.load(readFileSync(f,'utf8').split('---')[1])}));
