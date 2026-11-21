@@ -3,8 +3,9 @@ function walk(p){return readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirec
 const files=walk('dist');const html=files.filter(p=>p.endsWith('.html'));
 for(const r of ['index.html','about/index.html','publications/index.html','projects/index.html','status/index.html'])assert.ok(existsSync('dist/'+r),r);
 const pub=readFileSync('dist/publications/index.html','utf8');
-assert.equal((pub.match(/class="paper"/g)||[]).length,3); // journal articles only (exact class)
-assert.equal((pub.match(/class="paper conference"/g)||[]).length,1);
+const articleClasses=[...pub.matchAll(/<article class="([^"]*)"/g)].map((m)=>m[1]);
+assert.equal(articleClasses.filter((c)=>c==='paper').length,4);
+assert.equal(articleClasses.filter((c)=>c==='paper conference').length,2);
 assert.match(pub,/id="articles"/);
 assert.match(pub,/id="conferences"/);
 assert.match(pub,/>科研</);
@@ -33,7 +34,40 @@ assert.match(home, /href="\/rss\.xml"/);
 assert.doesNotMatch(home, /x\.com\/|twitter\.com\//i);
 
 for(const doi of ['10.1088/1361-6560/ae6af7','10.1177/08953996261439069','10.1088/1361-6560/ad6eda'])assert.ok(pub.includes(`https://doi.org/${doi}`));
-for(const f of html){const s=readFileSync(f,'utf8');assert.doesNotMatch(s,/Albert Einstein|Torvalds|einstein1905|example_pdf|PCFE|NSS\/MIC|mailto:|10\.2\.0\.|127\.0\.0\.1/i,f);for(const m of s.matchAll(/(?:href|src)="(\/[^"?#]*)/g)){const url=m[1];if(url==='/'||url.startsWith('//'))continue;const target=resolve('dist','.'+url);assert.ok(existsSync(target)||existsSync(join(target,'index.html')),`${f}: missing ${url}`)}}
+assert.match(pub,/Physics-Informed Jointly Constrained Spectral Signal Decomposition for High-Resolution X-Ray Fluorescence Computed Tomography/);
+assert.match(pub,/2026 IEEE Nuclear Science Symposium, Medical Imaging Conference and International Symposium on Room Temperature Semiconductor Detectors \(IEEE NSS\/MIC\/RTSD 2026\)/);
+assert.match(pub,/Granada, Spain/);
+assert.match(pub,/November 7–14, 2026/);
+assert.match(pub,/2026-11/);
+assert.match(pub,/2025-05/);
+assert.match(pub,/Poster Presentation · MIC-05-442 · Abstract #1630/);
+assert.match(pub,/https:\/\/nssmic\.ieee\.org\/2026\//);
+assert.match(pub,/海报/);
+assert.doesNotMatch(pub,/ieee2026\.eventclass\.it|abstractBooklet|\.pdf/i);
+assert.match(pub,/2026 中国体视学学会 CBCT 金属伪影消除挑战赛（CSS-MAR 2026）/);
+assert.match(pub,/李亮,\s*<strong>孙华海<\/strong>,\s*汪令行,\s*朱磊/);
+assert.match(pub,/中国体视学与图像分析/);
+assert.match(pub,/30\(4\), 397–405 · 2025/);
+assert.match(pub,/期刊文章 · 中文/);
+assert.match(pub,/4 篇正式发表期刊文章/);
+assert.match(pub,/2 条会议记录/);
+assert.doesNotMatch(pub,/10\.13505|chndoi\.org|https:\/\/doi\.org\/(?:undefined|"|\s)/);
+const bibOut=readFileSync('dist/publications.bib','utf8');
+const cssMar=bibOut.split('@article{Li2025CssMar')[1]?.split('@article{')[0]??'';
+assert.ok(cssMar.includes('language = {zh}'));
+assert.doesNotMatch(cssMar,/\bdoi\b|\burl\b/i);
+assert.doesNotMatch(bibOut,/10\.13505|chndoi\.org/);
+const honors=[
+  'Selected for the Young Science and Technology Talent Development Program, China Association for Science and Technology (CAST).',
+  'Outstanding Presentation Recommendation, Young Scholars Forum.',
+];
+const aboutHtml=readFileSync('dist/about/index.html','utf8');
+assert.match(aboutHtml,/Honors &amp; Awards|Honors & Awards/);
+for(const line of honors){
+  assert.equal(aboutHtml.split(line).length-1,1,line);
+  assert.equal(pub.includes(line),false,line);
+}
+for(const f of html){const s=readFileSync(f,'utf8');assert.doesNotMatch(s,/Albert Einstein|Torvalds|einstein1905|example_pdf|PCFE|mailto:|10\.2\.0\.|127\.0\.0\.1|10\.13505|chndoi\.org/i,f);if(f.endsWith('publications/index.html')){assert.match(s,/NSS\/MIC/);}else if(!f.includes('pagefind')){assert.doesNotMatch(s,/NSS\/MIC|CSS-MAR|Physics-Informed Jointly Constrained/,f);if(!f.endsWith('about/index.html')){for(const line of honors)assert.equal(s.includes(line),false,`${f}: ${line}`);}}for(const m of s.matchAll(/(?:href|src)="(\/[^"?#]*)/g)){const url=m[1];if(url==='/'||url.startsWith('//'))continue;const target=resolve('dist','.'+url);assert.ok(existsSync(target)||existsSync(join(target,'index.html')),`${f}: missing ${url}`)}}
 assert.equal(files.filter(f=>/\.pdf$/i.test(f)).length,0);const posts=walk('src/content/posts').filter(f=>/\.mdx?$/.test(f)).filter(f=>yaml.load(readFileSync(f,'utf8').split('---')[1]).draft===false);if(site.blogEnabled){assert.ok(existsSync('dist/blog/index.html'));if(posts.length===0)assert.ok(readFileSync('dist/blog/index.html','utf8').includes('文章正在酝酿中'));}else{assert.ok(!existsSync('dist/blog'));assert.ok(!readFileSync('dist/sitemap.xml','utf8').includes('/blog/'));for(const f of html)assert.ok(!readFileSync(f,'utf8').includes('href="/blog/'),`Hidden blog link: ${f}`);}assert.equal(files.filter(f=>/^dist\/blog\/.+\/index.html$/.test(f)).length,site.blogEnabled?posts.length:0);assert.ok(!files.some(f=>f.includes('qa-math')||f.includes('qa-draft')));
 const projects=walk('src/content/projects').filter(f=>f.endsWith('.md')).map(f=>({slug:f.split('/').pop().replace(/\.md$/,''),data:yaml.load(readFileSync(f,'utf8').split('---')[1])}));
 for(const p of projects)assert.equal(existsSync(`dist/projects/${p.slug}/index.html`),p.data.public===true,`Project visibility: ${p.slug}`);
@@ -108,6 +142,10 @@ const pubArticles=pubLd.flatMap(doc=>doc['@graph']??[]).filter(node=>node['@type
 assert.deepEqual(pubArticles.map(article=>article.identifier.value).sort(),['10.1088/1361-6560/ad6eda','10.1088/1361-6560/ae6af7','10.1177/08953996261439069']);
 assert.equal(JSON.stringify(pubLd).includes('DiffuCoCT'),false);
 assert.equal(JSON.stringify(pubLd).includes('10.1117'),false);
+assert.equal(JSON.stringify(pubLd).includes('10.13505'),false);
+assert.equal(JSON.stringify(pubLd).includes('CSS-MAR'),false);
+assert.equal(JSON.stringify(pubLd).includes('Physics-Informed Jointly'),false);
+assert.equal(JSON.stringify(pubLd).includes('chndoi.org'),false);
 const projectPages=pages.filter(f=>/^dist\/projects\/[^/]+\/index\.html$/.test(f));
 assert.equal(projectPages.length,2);
 for(const f of projectPages){
@@ -129,4 +167,4 @@ for(const f of postPages){
 const blogIndex=readFileSync('dist/blog/index.html','utf8');
 assert.equal(metaContent(blogIndex,'property','og:type'),'website');
 assert.equal(metaContent(blogIndex,'property','article:published_time'),undefined);
-console.log(`Static acceptance passed: ${html.length} pages, 3 papers, ${projects.filter(p=>p.data.public).length} public project details, no demo/private data, local assets resolve.`);
+console.log(`Static acceptance passed: ${html.length} pages, 4 papers, ${projects.filter(p=>p.data.public).length} public project details, no demo/private data, local assets resolve.`);
