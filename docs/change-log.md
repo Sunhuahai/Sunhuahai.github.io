@@ -1,5 +1,7 @@
 # 服务器变更记录
 
+2026-11-21：**已批准直接发布**（Asia/Shanghai。Huahai 确认「你直接部署就行，不用给我看了」，并要求同步到 omarchy。omarchy 同步由恢复后的本机处理，不在此环境操作；线上核验另记）。关于页 Honors & Awards 增加六条已正式评定的奖学金，只写等级、不写设立方：2026–2027 一等奖学金；2025–2026 二等奖学金；2024–2025 二等奖学金；2023–2024 三等奖学金；2022 学业优秀奖；2020 学业优秀奖。学年区间按授权保留，未译成英文。原有两条 2026 英文荣誉原文保留。来源为本人确认。论文、会议、项目、联系方式与篆文「青」未改。
+
 2026-11-21：**已上线**（PR #4，merge `f8e32b8374a36ed1d29961c193df3778f7a23814`。GitHub Actions「Deploy to GitHub Pages」run 44871023068 成功，https://github.com/Sunhuahai/Sunhuahai.github.io/actions/runs/44871023068 。线上核验 https://huahaiatlas.com/publications/ 与 https://huahaiatlas.com/about/ ，页面时间 Sat, 21 Nov 2026 05:28:59 GMT：海报含 MIC-05-442 与 Abstract #1630；CSS-MAR 作者顺序为李亮、孙华海、汪令行、朱磊，页面与 publications.bib 均无该文 DOI；关于页两项 2026 荣誉各出现一次。既有三篇 DOI 与 Fully3D 口头报告仍在。JSON-LD 仍只有这三篇 DOI。omarchy 同步不在此次操作内。）
 
 2026-11-21：**已批准合并发布**（Asia/Shanghai。Huahai 确认「按这版合并发布，恢复后同步到 omarchy」。内容仍为下列三项。本条只记录批准与合并，不记录部署成功；线上核验另记）。研究项目、在审稿、联系方式、篆文「青」、已有三篇英文期刊文章、Fully3D 2025 口头报告、已有博客、依赖、工作流与 DNS 均未改。
