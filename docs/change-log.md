@@ -1,5 +1,7 @@
 # 服务器变更记录
 
+2026-11-24：**已同步**（Asia/Shanghai）。omarchy 工作副本现位于 `/home/venti/Documents/huahai-atlas`（bare origin：`/home/venti/Documents/huahai-atlas.git`）。本机 `github-pages` 已快进到当时的 github/main `94526f5d0ee53c152542b69483bbde860f641aed`（含已上线的 PR #4 `f8e32b8` 与 PR #5 `fc5eb36`），并推送到 origin/github-pages。本条只更新 HANDOFF、DEPLOY、README 中的源码路径，以及本变更记录与 HANDOFF 待办里「待 omarchy 同步」的说明；未改网站页面、数据或依赖。未改腾讯云、DNS、Caddy、SSH 或防火墙。同步前工作区有未提交草稿（荣誉数据文件与已上线 About/会议文案不同），已保留在本地及 origin 分支 `wip-uncommitted-before-sync-20261124`（`73507cc`），未合并、未覆盖、未发布。
+
 2026-11-21：**已上线**（PR #5，merge `fc5eb3631ea9541150b85e9d4e6ee89c2f2a963e`。GitHub Actions「Deploy to GitHub Pages」run 44873895496 成功，https://github.com/Sunhuahai/Sunhuahai.github.io/actions/runs/44873895496 。线上 https://huahaiatlas.com/about/ Last-Modified Sat, 21 Nov 2026 06:06:28 GMT：六条奖学金各出现一次，只显示等级与学年；原有两条 2026 英文荣誉仍各一次。omarchy 同步不在此次操作内。）
 
 2026-11-21：**已批准直接发布**（Asia/Shanghai。Huahai 确认「你直接部署就行，不用给我看了」，并要求同步到 omarchy。omarchy 同步由恢复后的本机处理，不在此环境操作；线上核验另记）。关于页 Honors & Awards 增加六条已正式评定的奖学金，只写等级、不写设立方：2026–2027 一等奖学金；2025–2026 二等奖学金；2024–2025 二等奖学金；2023–2024 三等奖学金；2022 学业优秀奖；2020 学业优秀奖。学年区间按授权保留，未译成英文。原有两条 2026 英文荣誉原文保留。来源为本人确认。论文、会议、项目、联系方式与篆文「青」未改。

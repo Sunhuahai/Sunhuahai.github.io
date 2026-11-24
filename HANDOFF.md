@@ -11,9 +11,9 @@
 ## 源码位置与分支
 
 ```bash
-cd /home/venti/Projects/huahai-atlas   # 工作副本，用户 venti
+cd /home/venti/Documents/huahai-atlas   # 工作副本，用户 venti
 # 旁路 bare 仓库（origin）：
-#   /home/venti/Projects/huahai-atlas.git
+#   /home/venti/Documents/huahai-atlas.git
 ```
 
 | 名称 | 作用 |
@@ -49,7 +49,7 @@ git push github github-pages:main   # 快进即可，禁止 force
 ## 本地命令
 
 ```bash
-cd /home/venti/Projects/huahai-atlas
+cd /home/venti/Documents/huahai-atlas
 export YARN_ENABLE_SCRIPTS=0   # sharp 等预编译拉取失败时使用；平时也可先加
 node .yarn/releases/yarn-4.13.0.cjs install --immutable
 node .yarn/releases/yarn-4.13.0.cjs check
@@ -124,8 +124,8 @@ git push github github-pages:main
 ## 待办（给 Hermes / Huahai）
 
 - [ ] SPIE 2024 proceedings `10.1117/12.3027548` 已调研，**未入库**（见 `docs/handoff-drafts/`）
-- [x] CSS-MAR 中文期刊、IEEE NSS/MIC/RTSD 2026 海报、关于页两项 2026 荣誉：2026-11-21（Asia/Shanghai）已合并并上线（PR #4，main `f8e32b8`，见 docs/change-log.md）。omarchy 恢复后由本机同步，不在此环境操作。
-- [x] 关于页奖学金六条（仅等级：2026–2027 一等、2025–2026 二等、2024–2025 二等、2023–2024 三等、2022 与 2020 学业优秀奖）：2026-11-21 已合并并上线（PR #5，main `fc5eb36`，见 docs/change-log.md）。omarchy 同步由恢复后的本机处理，不在此环境操作。
+- [x] CSS-MAR 中文期刊、IEEE NSS/MIC/RTSD 2026 海报、关于页两项 2026 荣誉：2026-11-21（Asia/Shanghai）已合并并上线（PR #4，main `f8e32b8`，见 docs/change-log.md）。2026-11-24（Asia/Shanghai）已在 omarchy 本机将 github-pages 快进同步到 github/main `94526f5`，并推送到 origin/github-pages。
+- [x] 关于页奖学金六条（仅等级：2026–2027 一等、2025–2026 二等、2024–2025 二等、2023–2024 三等、2022 与 2020 学业优秀奖）：2026-11-21 已合并并上线（PR #5，main `fc5eb36`，见 docs/change-log.md）。2026-11-24（Asia/Shanghai）已随同一快进同步到 origin/github-pages（基线 `94526f5`）。
 - [ ] 腾讯预览站是否下线：**未定**
 - [ ] DNSPod 是否升级套餐以补齐 4×A/AAAA：**未定**
 

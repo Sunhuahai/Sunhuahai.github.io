@@ -1,6 +1,6 @@
 # 公网托管（GitHub Pages）
 
-- 源码：omarchy `/home/venti/Projects/huahai-atlas`，分支 `github-pages`（box 同步副本：`/workspace/huahai-atlas/site`）
+- 源码：omarchy `/home/venti/Documents/huahai-atlas`，分支 `github-pages`（box 同步副本：`/workspace/huahai-atlas/site`）
 - 发布：推送到 `Sunhuahai/Sunhuahai.github.io` 的 `main`，由 `.github/workflows/deploy-pages.yml` 构建并部署
 - 旧静态内容备份分支：`legacy-static`
 - 自定义域名与 DNS 暂不改动；`ops/deploy.sh` 仅用于腾讯云预览机，公网站点请走 GitHub Actions
